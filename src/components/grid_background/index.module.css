@@ -1,0 +1,51 @@
+.guides_guid {
+    border-left-width: 1px;
+    border-left-style: dashed;
+    background-size: 1px 8px;
+}
+
+.guides_guid:first-of-type,
+.guides_guid:last-of-type {
+    border-left-style: solid;
+}
+
+.guides_guid:last-of-type {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
+
+@media (max-width: 599px) {
+    .guides_guid:nth-of-type(3n) {
+        display: none;
+    }
+}
+
+@media (max-width: 899px) {
+    .guides_guid:nth-of-type(2n) {
+        display: none;
+    }
+}
+
+.angle_position_top {
+    transform: skewY(var(--angleNormal));
+    transform-origin: 100% 0;
+
+    @apply overflow-hidden;
+}
+
+.angle_position_bottom {
+    transform: skewY(0);
+    transform-origin: 0 0;
+}
+
+.angle_position_both {
+    transform: skewY(var(--angleNormal));
+    transform-origin: 100% 0;
+}
+
+.angle_section {
+    padding: calc(calc(100vw * var(--angleNormalSin)) + calc(128 * 1px) - var(--angleNormalSin) * var(--gutterWidth)) 0
+        calc(128 * 1px);
+}
