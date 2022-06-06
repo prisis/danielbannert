@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "../link";
 
 const Navigation: FC<{ navigation: { path: string; title: string }[] }> = ({ navigation = [] }) => {
     const [state, setState] = useState(false);
@@ -62,7 +62,7 @@ const Navigation: FC<{ navigation: { path: string; title: string }[] }> = ({ nav
                             {navigation.map((item, index: number) => (
                                 // eslint-disable-next-line react/no-array-index-key
                                 <li key={index} className="text-gray-600 hover:text-indigo-600">
-                                    <Link to={item.path}>{item.title}</Link>
+                                    <Link href={item.path}>{item.title}</Link>
                                 </li>
                             ))}
                         </ul>

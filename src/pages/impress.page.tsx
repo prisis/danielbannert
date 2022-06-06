@@ -3,7 +3,7 @@ import type { FC } from "react";
 import Footer from "../components/footer";
 import GridBackground from "../components/grid_background";
 
-const Impress: FC = () => (
+const ImpressPage: FC = () => (
     <GridBackground>
         <section className="px-2 pt-5 md:px-0 relative">
             <div className="container max-w-6xl px-5 mx-auto space-y-6">
@@ -71,4 +71,4 @@ const Impress: FC = () => (
     </GridBackground>
 );
 
-export default Impress;
+export default ImpressPage;
