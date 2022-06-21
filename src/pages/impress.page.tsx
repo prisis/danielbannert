@@ -1,13 +1,13 @@
 import type { FC } from "react";
 
-import Footer from "../components/footer";
 import GridBackground from "../components/grid_background";
+import Link from "../components/link";
 
 const ImpressPage: FC = () => (
     <GridBackground>
-        <section className="px-2 pt-5 md:px-0 relative">
+        <section className="px-2 py-32 md:px-0 relative">
             <div className="container max-w-6xl px-5 mx-auto space-y-6">
-                <h1>Impressum</h1>
+                <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl font-heading">Impressum</h1>
                 <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
                 <p>
                     Daniel Bannert
@@ -25,9 +25,9 @@ const ImpressPage: FC = () => (
                 <h2>Streitschlichtung</h2>
                 <p>
                     Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-                    <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">
                         https://ec.europa.eu/consumers/odr
-                    </a>
+                    </Link>
                     .<br /> Unsere E-Mail-Adresse finden Sie oben im Impressum.
                 </p>
                 <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
@@ -67,7 +67,6 @@ const ImpressPage: FC = () => (
                 </p>
             </div>
         </section>
-        <Footer />
     </GridBackground>
 );
 

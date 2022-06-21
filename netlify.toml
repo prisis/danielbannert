@@ -6,5 +6,5 @@
   package = "/.netlify/netlify-plugin-pnpm"
 
 [build]
-  command = "npx pnpm@7 install --store-dir=.pnpm --frozen-lockfile && npx pnpm@7 run build"
+  command = "npx pnpm@7 install --store-dir=.pnpm --frozen-lockfile && npx pnpm@7 run build:github-list && npx pnpm@7 run build"
   publish = "dist/client"

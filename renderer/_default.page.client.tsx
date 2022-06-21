@@ -1,11 +1,12 @@
+import NProgress from "nprogress";
 import type { Root } from "react-dom/client";
 import { createRoot, hydrateRoot } from "react-dom/client";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import type { PageContextBuiltInClient } from "vite-plugin-ssr/client";
 import { useClientRouter } from "vite-plugin-ssr/client/router";
-import NProgress from "nprogress";
 
-import PageShell from "../src/components/layout/page-shell";
 import getPageTitle from "../src/helpers/get-page-title";
+import PageShell from "../src/layout/page-shell";
 import type { PageContext } from "./types";
 
 function onTransitionStart() {
@@ -19,11 +20,18 @@ let root: Root;
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const { hydrationPromise } = useClientRouter({
     render(pageContext: PageContextBuiltInClient & PageContext) {
-        const { Page, pageProps, isHydration } = pageContext;
+        const { Page, pageProps, documentProps, isHydration } = pageContext;
+
         const page = (
             <PageShell pageContext={pageContext}>
-                {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                <Page {...pageProps} />
+                <HelmetProvider>
+                    <Helmet>
+                        <title>{getPageTitle(pageContext)}</title>
+                        <meta name="description" content={(documentProps && documentProps.description) || "Personal Portfolio"} />
+                    </Helmet>
+                    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                    <Page {...pageProps} />
+                </HelmetProvider>
             </PageShell>
         );
 
@@ -38,14 +46,11 @@ const { hydrationPromise } = useClientRouter({
 
             root.render(page);
         }
-
-        document.title = getPageTitle(pageContext);
     },
     onTransitionStart,
     onTransitionEnd,
 });
 
-hydrationPromise
-    .catch((error) => {
-        throw error;
-    });
+hydrationPromise.catch((error) => {
+    throw error;
+});
