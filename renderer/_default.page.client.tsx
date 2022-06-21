@@ -29,7 +29,33 @@ const { hydrationPromise } = useClientRouter({
                 <HelmetProvider>
                     <Helmet>
                         <title>{getPageTitle(pageContext)}</title>
-                        <meta name="description" content={(documentProps && documentProps.description) || "Personal Portfolio"} />
+                        <meta
+                            name="description"
+                            content={
+                                (documentProps && documentProps.description)
+                                || "A Software Engineer, Consultant and Open Source Enthusiast from Regensburg (Germany)."
+                            }
+                        />
+
+                        <meta name="author" content="Daniel Bannert" />
+                        <meta name="revisit-after" content="7 days" />
+
+                        <meta property="og:title" content={getPageTitle(pageContext)} />
+                        <meta
+                            property="og:description"
+                            content={
+                                (documentProps && documentProps.description)
+                                || "A Software Engineer, Consultant and Open Source Enthusiast from Regensburg (Germany)."
+                            }
+                        />
+                        <meta property="og:image" content="https://www.danielbannert.com/assets/avatar.jpeg" />
+                        <meta property="og:image:alt" content="Daniel Bannert - Avatar" />
+                        <meta property="og:locale" content="en_GB" />
+                        <meta property="og:type" content="website" />
+                        <meta name="twitter:card" content="summary" />
+                        <meta name="twitter:creator" content="@_prisis_" />
+                        <meta property="og:url" content="https://www.danielbannert.com" />
+                        <link rel="canonical" href="https://www.danielbannert.com" />
 
                         <link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-touch-icon-57x57.png" />
                         <link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-touch-icon-60x60.png" />

@@ -41,3 +41,8 @@ const IndexPage: FC = () => (
 );
 
 export default IndexPage;
+
+// eslint-disable-next-line unicorn/prevent-abbreviations
+export const documentProps = {
+    title: "Daniel Bannert",
+};

@@ -38,3 +38,9 @@ const ImpressPage: FC = () => (
 );
 
 export default ImpressPage;
+
+// eslint-disable-next-line unicorn/prevent-abbreviations
+export const documentProps = {
+    title: "Projects - Daniel Bannert",
+    description: "List of projects that I am proud of",
+};
