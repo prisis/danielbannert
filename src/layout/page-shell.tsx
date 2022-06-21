@@ -27,6 +27,10 @@ const PageShell: FC<PropsWithChildren<{ pageContext: PageContext }>> = ({ childr
                             title: "Projects",
                             path: "/projects",
                         },
+                        {
+                            title: "Resume",
+                            path: "https://resume.danielbannert.com",
+                        },
                     ]}
                     rightNavigation={[
                         {
