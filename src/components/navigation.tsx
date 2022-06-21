@@ -62,13 +62,14 @@ const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ mi
                         </div>
                     </div>
                     <div
-                        className={`flex-1 justify-between flex-row-reverse lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${
-                            state ? "h-screen pb-20 overflow-auto pr-4" : "hidden"
+                        className={`flex-1 justify-between flex-row lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${
+                            state ? "h-screen pb-20 pr-4" : "hidden"
                         }`}
                     >
-                        <div>
-                            <ul className="flex flex-col-reverse space-x-0 lg:space-x-6 lg:flex-row">
-                                {rightNavigation.map((item, index: number) => (
+                        <div className="flex-1 ml-6">
+                            <ul className="justify-center items-center space-y-8 lg:flex lg:space-x-6 lg:space-y-0">
+                                {/* eslint-disable-next-line radar/no-identical-functions */}
+                                {midNavigation.map((item, index: number) => (
                                     // eslint-disable-next-line react/no-array-index-key
                                     <li key={index} className="mt-8 mb-8 lg:mt-0 lg:mb-0">
                                         {createLink(item)}
@@ -76,12 +77,12 @@ const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ mi
                                 ))}
                             </ul>
                         </div>
-                        <div className="flex-1 ml-6">
-                            <ul className="justify-center items-center space-y-8 lg:flex lg:space-x-6 lg:space-y-0">
-                                {/* eslint-disable-next-line radar/no-identical-functions */}
-                                {midNavigation.map((item, index: number) => (
+                        <div className="border-b p-3 lg:border-0 lg:p-0" />
+                        <div>
+                            <ul className="flex ml-6 space-x-6 lg:flex-row">
+                                {rightNavigation.map((item, index: number) => (
                                     // eslint-disable-next-line react/no-array-index-key
-                                    <li key={index} className="mt-8 mb-8 lg:mt-0 lg:mb-0">
+                                    <li key={index} className="mt-8 mb-8 lg:mt-0 lg:mb-0 flex-auto">
                                         {createLink(item)}
                                     </li>
                                 ))}
