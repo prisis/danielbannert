@@ -12,7 +12,10 @@ const IndexPage: FC = () => (
                         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-4xl lg:text-5xl xl:text-8xl">
                             <span className="block xl:inline">Daniel Bannert</span>
                         </h1>
-                        <p className="mx-auto text-base sm:max-w-md lg:text-xl md:max-w-3xl">Hey, I am Daniel Bannert, ....</p>
+                        <p className="mx-auto text-base sm:max-w-md lg:text-xl md:max-w-3xl">
+                            Hey, I am Daniel Bannert, a passionate self-taught Full Stack Software Engineer, Consultant and Open Source Enthusiast from
+                            Regensburg (Germany).
+                        </p>
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 md:px-3">
