@@ -13,8 +13,9 @@ const IndexPage: FC = () => (
                             <span className="block xl:inline">Daniel Bannert</span>
                         </h1>
                         <p className="mx-auto text-base sm:max-w-md lg:text-xl md:max-w-3xl">
-                            Hey, I am Daniel Bannert, a passionate self-taught Full Stack Software Engineer, Consultant and Open Source Enthusiast from
-                            Regensburg (Germany).
+                            Hey, I am Daniel Bannert, a passionate self-taught Full Stack Software Engineer, Consultant and Open Source Enthusiast. <br />
+                            <br /> I take great care in the experience, architecture, and code quality of the things I build. Collaboration is everything to me,
+                            and a highlight of my career is when my work gets to become something that helps the community or industry as a whole.
                         </p>
                     </div>
                 </div>
@@ -48,4 +49,6 @@ export default IndexPage;
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export const documentProps = {
     title: "Daniel Bannert",
+    description:
+        "I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful.",
 };

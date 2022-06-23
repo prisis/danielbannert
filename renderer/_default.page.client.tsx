@@ -20,14 +20,12 @@ let root: Root;
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const { hydrationPromise } = useClientRouter({
     render(pageContext: PageContextBuiltInClient & PageContext) {
-        const {
-            Page, pageProps, documentProps, isHydration,
-        } = pageContext;
+        const { Page, pageProps, isHydration } = pageContext;
 
         const page = (
             <PageShell pageContext={pageContext}>
                 <HelmetProvider>
-                    <SharedHeader documentProps={documentProps} />
+                    <SharedHeader pageContext={pageContext} />
                     {/* eslint-disable-next-line react/jsx-props-no-spreading */}
                     <Page {...pageProps} />
                 </HelmetProvider>

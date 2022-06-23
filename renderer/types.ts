@@ -6,12 +6,9 @@ export type PageContext = {
     pageExports: {
         documentProps?: {
             title: string;
+            description: string;
         };
     };
     urlPathname: string;
     pageProps: Record<string, unknown>;
-    documentProps?: {
-        title: string;
-        description: string;
-    };
 };

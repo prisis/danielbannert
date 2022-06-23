@@ -10,13 +10,13 @@ import type { PageContext } from "./types";
 
 export const render = async (pageContext: PageContextBuiltIn & PageContext) => {
     // See https://vite-plugin-ssr.com/head
-    const { Page, pageProps, documentProps } = pageContext;
+    const { Page, pageProps } = pageContext;
     const helmetContext: { helmet?: HelmetServerState } = {};
 
     const view = renderToString(
         <PageShell pageContext={pageContext}>
             <HelmetProvider context={helmetContext}>
-                <SharedHeader documentProps={documentProps} />
+                <SharedHeader pageContext={pageContext} />
                 {/* eslint-disable-next-line react/jsx-props-no-spreading */}
                 <Page {...pageProps} />
             </HelmetProvider>
@@ -50,5 +50,4 @@ export const render = async (pageContext: PageContextBuiltIn & PageContext) => {
     };
 };
 
-// See https://vite-plugin-ssr.com/data-fetching
 export const passToClient = ["pageProps", "documentProps", "someAsyncProps"];
