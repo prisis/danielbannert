@@ -7,10 +7,12 @@ import { useState } from "react";
 import Link from "./link";
 import { ThemeSelect, ThemeToggle } from "./theme-mode-switch";
 
-type LinkProperties = { path: string; title: string; icon?: ReactElement };
+type LinkProperties = { path: string; title: string; icon?: ReactElement; external?: boolean };
 type Links = LinkProperties[];
 
-const createLink = ({ path, title, icon }: LinkProperties, showOnlyText?: boolean, onClick?: MouseEventHandler<any>): ReactElement => {
+const createLink = ({
+    path, title, icon, external,
+}: LinkProperties, showOnlyText?: boolean, onClick?: MouseEventHandler<any>): ReactElement => {
     if (icon && !showOnlyText) {
         return (
             <Link href={path} title={title} onClick={onClick}>
@@ -21,7 +23,7 @@ const createLink = ({ path, title, icon }: LinkProperties, showOnlyText?: boolea
     }
 
     return (
-        <Link href={path} title={title} onClick={onClick}>
+        <Link href={path} title={title} onClick={onClick} external={external}>
             {title}
         </Link>
     );

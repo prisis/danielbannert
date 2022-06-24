@@ -9,7 +9,7 @@ const Footer: FC = () => (
         </h2>
         <div className="px-5 py-12 container mx-auto md:flex md:items-center md:justify-between px-4 lg:px-8">
             <p className="mt-8 text-base leading-6">
-                <Link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" boldText={false} underline>
+                <Link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" boldText={false} underline external>
                     CC BY-NC-SA 4.0
                 </Link>{" "}
                 © 2021 Daniel Bannert. All rights reserved.

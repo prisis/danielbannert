@@ -18,11 +18,11 @@ const IndexPage: FC = () => (
                         </p>
                         <p className="mt-2">
                             Find me on{" "}
-                            <Link href="https://github.com/prisis" title="GitHub">
+                            <Link href="https://github.com/prisis" title="GitHub" external>
                                 GitHub
                             </Link>
                             ,{" "}
-                            <Link href="https://twitter.com/_prisis_" title="Twitter">
+                            <Link href="https://twitter.com/_prisis_" title="Twitter" external>
                                 Twitter
                             </Link>
                             <br />
@@ -33,11 +33,11 @@ const IndexPage: FC = () => (
                         </p>
                         <p>
                             If you like my works, consider sponsoring me on{" "}
-                            <Link href="https://github.com/sponsors/prisis" title="GitHub Sponsor">
+                            <Link href="https://github.com/sponsors/prisis" title="GitHub Sponsor" external>
                                 GitHub Sponsor
                             </Link>{" "}
                             or{" "}
-                            <Link href="https://opencollective.com/_prisis_" title="open collective">
+                            <Link href="https://opencollective.com/_prisis_" title="open collective" external>
                                 open collective
                             </Link>{" "}
                             to keep them sustainable.
