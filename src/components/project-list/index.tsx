@@ -50,7 +50,7 @@ const ProjectList: FC<{
 
         {showMore && (
             <li className="flex items-center justify-center">
-                <Link href="/projects" className="border p-3 hover:border-lime-500 hover:border-2">
+                <Link href="/projects" className="border p-3 hover:border-lime-500 hover:border-2 mt-8 lg:mt-0">
                     Show more
                 </Link>
             </li>
