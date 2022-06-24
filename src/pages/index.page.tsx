@@ -6,7 +6,7 @@ import ProjectList from "../components/project-list";
 
 const IndexPage: FC = () => (
     <section className="relative">
-        <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8 items-center">
+        <div className="px-4 py-12 container mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8 items-center">
             <div className="flex flex-wrap items-center sm:-mx-3">
                 <div className="w-full md:w-1/2 md:px-3">
                     <div className="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0 prose md:prose-lg lg:prose-xl dark:prose-invert">

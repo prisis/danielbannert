@@ -5,7 +5,7 @@ import Link from "../components/link";
 
 const ImpressPage: FC = () => (
     <GridBackground>
-        <section className="relative max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <section className="relative container mx-auto px-4 lg:px-8 py-12 mx-auto space-y-8 overflow-hidden">
             <div className="container prose prose-lg dark:prose-invert">
                 <h1>Impressum</h1>
                 <h3>Angaben gem&auml;&szlig; &sect; 5 TMG</h3>

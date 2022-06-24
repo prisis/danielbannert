@@ -5,11 +5,9 @@ import Link from "../components/link";
 
 const ImpressPage: FC = () => (
     <GridBackground>
-        <section className="px-2 py-32 md:px-0 relative">
-            <div className="container max-w-6xl px-5 mx-auto space-y-6">
-                <h1 id="contributor-covenant-code-of-conduct" className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl font-heading">
-                    Contributor Covenant Code of Conduct
-                </h1>
+        <section className="relative container mx-auto px-4 lg:px-8 py-12 mx-auto space-y-8 overflow-hidden">
+            <div className="container prose prose-lg dark:prose-invert">
+                <h1 id="contributor-covenant-code-of-conduct">Contributor Covenant Code of Conduct</h1>
                 <h2 id="our-pledge">Our Pledge</h2>
                 <p>
                     We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless
@@ -110,7 +108,8 @@ const ImpressPage: FC = () => (
                 </p>
                 <p>
                     For answers to common questions about this code of conduct, see the FAQ at{" "}
-                    <Link href="https://www.contributor-covenant.org/faq">https://www.contributor-covenant.org/faq</Link>. Translations are available at{" "}
+                    <Link href="https://www.contributor-covenant.org/faq">https://www.contributor-covenant.org/faq</Link>. <br />
+                    Translations are available at{" "}
                     <Link href="https://www.contributor-covenant.org/translations">https://www.contributor-covenant.org/translations</Link>.
                 </p>
             </div>
