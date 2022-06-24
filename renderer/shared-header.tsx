@@ -16,19 +16,24 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <meta name="author" content="Daniel Bannert" />
         <meta name="revisit-after" content="7 days" />
 
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@_prisis_" />
+
         <meta property="og:title" content={pageContext?.pageExports?.documentProps?.title || "Daniel Bannert"} />
         <meta
             property="og:description"
             content={
-                pageContext?.pageExports?.documentProps?.description || "A Software Engineer, Consultant and Open Source Enthusiast from Regensburg (Germany)."
+                pageContext?.pageExports?.documentProps?.description
+                || "I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful."
             }
         />
-        <meta property="og:image" content="https://www.danielbannert.com/assets/avatar.jpeg" />
-        <meta property="og:image:alt" content="Daniel Bannert - Avatar" />
+        <meta property="og:image" content="/assets/twitter_card.png" />
+        <meta
+            property="og:image:alt"
+            content="I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful."
+        />
         <meta property="og:locale" content="en_GB" />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:creator" content="@_prisis_" />
         <meta
             property="og:url"
             content={`https://www.danielbannert.com/${pageContext?.pageExports?.documentProps?.pageUrl?.trimStart().replace(/^\/+/g, "")}`}

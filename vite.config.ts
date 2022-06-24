@@ -26,6 +26,10 @@ export default defineConfig(async ({ mode }) => {
                         src: "assets/avatar.jpeg",
                         dest: "assets",
                     },
+                    {
+                        src: "assets/twitter_card.png",
+                        dest: "assets",
+                    },
                 ],
             }),
         ],
