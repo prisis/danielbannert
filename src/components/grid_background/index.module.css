@@ -46,6 +46,5 @@
 }
 
 .angle_section {
-    padding: calc(calc(100vw * var(--angleNormalSin)) + calc(128 * 1px) - var(--angleNormalSin) * var(--gutterWidth)) 0
-        calc(128 * 1px);
+    padding: calc(calc(100vw * var(--angleNormalSin)) + calc(128 * 1px) - var(--angleNormalSin) * var(--gutterWidth)) 0 calc(128 * 1px);
 }

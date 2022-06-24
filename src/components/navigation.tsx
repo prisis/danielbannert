@@ -1,14 +1,17 @@
-import type { FC, ReactElement } from "react";
+import { Dialog } from "@headlessui/react";
+import type {
+    DetailedHTMLProps, FC, HTMLAttributes, MouseEventHandler, ReactElement,
+} from "react";
 import { useState } from "react";
 
 import Link from "./link";
-import ThemeModeSwitch from "./theme-mode-switch";
+import { ThemeSelect, ThemeToggle } from "./theme-mode-switch";
 
 type LinkProperties = { path: string; title: string; icon?: ReactElement };
 type Links = LinkProperties[];
 
-const createLink = ({ path, title, icon }: LinkProperties, onClick): ReactElement => {
-    if (icon) {
+const createLink = ({ path, title, icon }: LinkProperties, showOnlyText?: boolean, onClick?: MouseEventHandler<any>): ReactElement => {
+    if (icon && !showOnlyText) {
         return (
             <Link href={path} title={title} onClick={onClick}>
                 <span className="sr-only">{title}</span>
@@ -24,12 +27,78 @@ const createLink = ({ path, title, icon }: LinkProperties, onClick): ReactElemen
     );
 };
 
+const NavPopover: FC<
+{ midNavigation?: Links; rightNavigation?: Links; display?: string } & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+> = ({
+    display = "lg:hidden", midNavigation = [], rightNavigation = [], className, ...properties
+}) => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    return (
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        <div className={[className, display].filter(Boolean).join(" ")} {...properties}>
+            <button
+                type="button"
+                className="text-zinc-500 w-8 h-8 flex items-center justify-center hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
+                onClick={() => setIsOpen(true)}
+            >
+                <span className="sr-only">Navigation</span>
+                <svg width="24" height="24" fill="none" aria-hidden="true">
+                    <path
+                        d="M12 6v.01M12 12v.01M12 18v.01M12 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm0 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm0 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
+                </svg>
+            </button>
+            <Dialog as="div" className={["fixed z-50 inset-0", display].filter(Boolean).join(" ")} open={isOpen} onClose={setIsOpen}>
+                <Dialog.Overlay className="fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-zinc-900/80" />
+                <div className="fixed top-4 right-4 w-full max-w-xs bg-white rounded-lg shadow-lg p-6 text-base font-semibold text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:highlight-white/5">
+                    <button
+                        type="button"
+                        className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        <span className="sr-only">Close navigation</span>
+                        <svg viewBox="0 0 10 10" className="w-2.5 h-2.5 overflow-visible" aria-hidden="true">
+                            <path d="M0 0L10 10M10 0L0 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                    </button>
+                    <ul className="space-y-6">
+                        {/* eslint-disable-next-line radar/no-identical-functions */}
+                        {midNavigation.map((item, index: number) => (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <li key={index} className="mt-8 mb-8 lg:mt-0 lg:mb-0">
+                                {createLink(item, true, () => setIsOpen(!isOpen))}
+                            </li>
+                        ))}
+                        <li>
+                            <hr />
+                        </li>
+                        {rightNavigation.map((item, index: number) => (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <li key={index} className="mt-8 mb-8 lg:mt-0 lg:mb-0 flex-auto">
+                                {createLink(item, true, () => setIsOpen(!isOpen))}
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-200/10">
+                        <ThemeSelect />
+                    </div>
+                </div>
+            </Dialog>
+        </div>
+    );
+};
+
 const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ midNavigation = [], rightNavigation = [] }) => {
-    const [state, setState] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div className="bg-white dark:bg-zinc-800 w-full relative border-b border-zinc-200 dark:border-zinc-600">
-            <nav className="max-w-screen-xl mx-auto overflow-hidden">
+            <nav className="container mx-auto overflow-hidden">
                 <div className="items-center px-4 mx-auto lg:flex lg:px-8">
                     <div className="flex items-center justify-between py-3 lg:py-4 lg:block h-20">
                         <a href="/" title="Daniel Bannert">
@@ -40,38 +109,11 @@ const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ mi
                                 />
                             </svg>
                         </a>
-                        <div className="lg:hidden">
-                            <button
-                                className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
-                                type="button"
-                                onClick={() => setState(!state)}
-                            >
-                                {state ? (
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 dark:fill-white" viewBox="0 0 20 20">
-                                        <path
-                                            fillRule="evenodd"
-                                            clipRule="evenodd"
-                                            fill="currentColor"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        />
-                                    </svg>
-                                ) : (
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-6 w-6 dark:fill-white"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" fill="currentColor" />
-                                    </svg>
-                                )}
-                            </button>
-                        </div>
+                        <NavPopover midNavigation={midNavigation} rightNavigation={rightNavigation} />
                     </div>
                     <div
                         className={`flex-1 justify-between flex-row lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${
-                            state ? "h-screen pb-20 pr-4" : "hidden"
+                            isOpen ? "h-screen pb-20 pr-4" : "hidden"
                         }`}
                     >
                         <div className="flex-1 ml-6">
@@ -80,7 +122,7 @@ const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ mi
                                 {midNavigation.map((item, index: number) => (
                                     // eslint-disable-next-line react/no-array-index-key
                                     <li key={index} className="mt-8 mb-8 lg:mt-0 lg:mb-0">
-                                        {createLink(item, () => setState(!state))}
+                                        {createLink(item, true, () => setIsOpen(!isOpen))}
                                     </li>
                                 ))}
                             </ul>
@@ -91,13 +133,13 @@ const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ mi
                                 {rightNavigation.map((item, index: number) => (
                                     // eslint-disable-next-line react/no-array-index-key
                                     <li key={index} className="mt-8 mb-8 lg:mt-0 lg:mb-0 flex-auto">
-                                        {createLink(item, () => setState(!state))}
+                                        {createLink(item, false, () => setIsOpen(!isOpen))}
                                     </li>
                                 ))}
                             </ul>
                         </div>
                         <div className="ml-6">
-                            <ThemeModeSwitch />
+                            <ThemeToggle />
                         </div>
                     </div>
                 </div>
