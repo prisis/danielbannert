@@ -29,8 +29,11 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content="@_prisis_" />
-        <meta property="og:url" content="https://www.danielbannert.com" />
-        <link rel="canonical" href="https://www.danielbannert.com" />
+        <meta
+            property="og:url"
+            content={`https://www.danielbannert.com/${pageContext?.pageExports?.documentProps?.pageUrl?.trimStart().replace(/^\/+/g, "")}`}
+        />
+        <link rel="canonical" href={`https://www.danielbannert.com/${pageContext?.pageExports?.documentProps?.pageUrl?.trimStart().replace(/^\/+/g, "")}`} />
 
         <link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-touch-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-touch-icon-60x60.png" />

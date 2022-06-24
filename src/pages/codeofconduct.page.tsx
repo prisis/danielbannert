@@ -123,4 +123,5 @@ export default ImpressPage;
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export const documentProps = {
     title: "Code of Conduct - Daniel Bannert",
+    pageUrl: "/code-of-conduct",
 };

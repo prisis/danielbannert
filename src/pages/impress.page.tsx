@@ -75,4 +75,5 @@ export default ImpressPage;
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export const documentProps = {
     title: "Impressum - Daniel Bannert",
+    pageUrl: "/impress",
 };

@@ -43,4 +43,5 @@ export default ImpressPage;
 export const documentProps = {
     title: "Projects - Daniel Bannert",
     description: "List of projects that I am proud of",
+    pageUrl: "/projects",
 };

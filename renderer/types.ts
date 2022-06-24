@@ -7,6 +7,7 @@ export type PageContext = {
         documentProps?: {
             title: string;
             description: string;
+            pageUrl?: string;
         };
     };
     urlPathname: string;

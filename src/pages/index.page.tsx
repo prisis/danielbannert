@@ -76,4 +76,5 @@ export const documentProps = {
     title: "Daniel Bannert",
     description:
         "I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful.",
+    pageUrl: "/",
 };
