@@ -1,6 +1,7 @@
 // eslint-disable-next-line unicorn/prefer-module
 module.exports = {
     content: ["index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    darkMode: "class",
     theme: {
         extend: {
             fontFamily: {

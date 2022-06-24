@@ -2,6 +2,7 @@ import type { FC, ReactElement } from "react";
 import { useState } from "react";
 
 import Link from "./link";
+import ThemeModeSwitch from "./theme-mode-switch";
 
 type LinkProperties = { path: string; title: string; icon?: ReactElement };
 type Links = LinkProperties[];
@@ -87,6 +88,9 @@ const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ mi
                                     </li>
                                 ))}
                             </ul>
+                        </div>
+                        <div className="ml-6">
+                            <ThemeModeSwitch />
                         </div>
                     </div>
                 </div>

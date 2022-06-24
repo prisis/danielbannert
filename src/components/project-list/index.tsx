@@ -8,9 +8,13 @@ const ProjectList: FC<{
     showMore?: boolean;
     ulClasses?: string;
     waterFall?: boolean;
-}> = ({ list, showMore = false, ulClasses = "grid gap-4 md:grid-cols-2 group mt-4", waterFall = false }) => (
+}> = ({
+    list, showMore = false, ulClasses = "grid gap-4 md:grid-cols-2 group mt-4", waterFall = false,
+}) => (
     <ul className={ulClasses}>
-        {list.map(({ url, title, language, description, stars }, index) => {
+        {list.map(({
+            url, title, language, description, stars,
+        }, index) => {
             let waterFallClasses = "";
 
             if (waterFall) {
@@ -46,7 +50,7 @@ const ProjectList: FC<{
 
         {showMore && (
             <li className="flex items-center justify-center">
-                <Link href="/projects" className="border p-3 hover:border-lime-500 hover:border-2 text-gray-600 hover:text-lime-500 dark:text-white transition">
+                <Link href="/projects" className="border p-3 hover:border-lime-500 hover:border-2">
                     Show more
                 </Link>
             </li>

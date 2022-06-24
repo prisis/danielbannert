@@ -1,11 +1,31 @@
-import type { AnchorHTMLAttributes, DetailedHTMLProps, FC, HTMLAttributeAnchorTarget, PropsWithChildren } from "react";
+import type {
+    AnchorHTMLAttributes, DetailedHTMLProps, FC, HTMLAttributeAnchorTarget, PropsWithChildren,
+} from "react";
 
 import { usePageContext } from "../context/use-page-context";
 
-const Link: FC<PropsWithChildren<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>> & { boldText?: boolean }> = ({
+const Link: FC<
+PropsWithChildren<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>> & {
+    boldText?: boolean;
+    baseColor?: string;
+    hoverColor?: string;
+    darkColor?: string;
+    darkHoverColor?: string;
+    underline?: boolean;
+    activeColor?: string;
+    darkActiveColor?: string;
+}
+> = ({
     href,
-    className = "text-gray-600 hover:text-lime-500 dark:text-white transition-colors",
+    className = "transition-colors",
+    baseColor = "text-gray-600",
+    hoverColor = "hover:text-lime-500",
+    darkColor = "dark:text-white",
+    darkHoverColor = "dark:hover:text-lime-500",
+    activeColor = "text-lime-500",
+    darkActiveColor = "dark:text-lime-500",
     boldText,
+    underline = false,
     target,
     children,
     ...other
@@ -16,7 +36,16 @@ const Link: FC<PropsWithChildren<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnch
     return (
         <a
             href={href}
-            className={[className, pageContext.urlPathname === href && "text-lime-500 dark:text-lime-500", boldText ? "font-bold" : ""]
+            className={[
+                "transition-colors",
+                underline ? "underline" : "",
+                pageContext.urlPathname === href ? `${activeColor} ${darkActiveColor}` : `${baseColor}`,
+                boldText ? "font-bold" : "",
+                `${hoverColor}`,
+                `${darkColor}`,
+                `${darkHoverColor}`,
+                className,
+            ]
                 .filter(Boolean)
                 .join(" ")}
             target={linkTarget}

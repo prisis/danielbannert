@@ -14,7 +14,7 @@ const PageShell: FC<PropsWithChildren<{ pageContext: PageContext }>> = ({ childr
         <PageContextProvider pageContext={pageContext}>
             <GridBackground
                 classes={{
-                    main: "relative text-gray-600 dark:text-white min-h-screen",
+                    main: "relative text-gray-600 dark:text-white min-h-screen transition",
                 }}
             >
                 <Navigation

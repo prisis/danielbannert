@@ -37,7 +37,8 @@
         "unicode-emoji-json": "^0.3.1",
         "vite-plugin-favicon2": "^1.1.4",
         "vite-plugin-ssr": "^0.3.64",
-        "vite-plugin-static-copy": "^0.5.1"
+        "vite-plugin-static-copy": "^0.5.1",
+        "@headlessui/react": "^1.6.5"
     },
     "devDependencies": {
         "@anolilab/eslint-config": "^4.0.8",

@@ -5,10 +5,10 @@ import Link from "../components/link";
 
 const ImpressPage: FC = () => (
     <GridBackground>
-        <section className="px-2 py-32 md:px-0 relative">
-            <div className="container max-w-6xl px-5 mx-auto space-y-6">
-                <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl font-heading">Impressum</h1>
-                <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
+        <section className="relative max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+            <div className="container prose prose-lg dark:prose-invert">
+                <h1>Impressum</h1>
+                <h3>Angaben gem&auml;&szlig; &sect; 5 TMG</h3>
                 <p>
                     Daniel Bannert
                     <br />
@@ -16,13 +16,13 @@ const ImpressPage: FC = () => (
                     <br />
                     D-93059 Regensburg
                 </p>
-                <h2>Kontakt</h2>
+                <h3>Kontakt</h3>
                 <p>
                     Telefon: +49 (0) 175 7322833
                     <br />
                     E-Mail: d.bannert@anolilab.de
                 </p>
-                <h2>Streitschlichtung</h2>
+                <h3>Streitschlichtung</h3>
                 <p>
                     Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
                     <Link href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">
