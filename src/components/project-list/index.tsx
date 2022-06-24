@@ -18,7 +18,7 @@ const ProjectList: FC<{
             let waterFallClasses = "";
 
             if (waterFall) {
-                waterFallClasses = index % 2 !== 0 ? "md:mt-3" : "md:mb-3";
+                waterFallClasses = index % 2 !== 0 ? "lg:mt-4" : "lg:mb-4";
             }
 
             return (

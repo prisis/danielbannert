@@ -20,7 +20,7 @@ const ImpressPage: FC = () => (
         </section>
         <section className="relative container mx-auto px-2">
             <ProjectList
-                ulClasses="grid gap-4 md:grid-cols-4 group mt-4"
+                ulClasses="grid gap-4 md:grid-cols-2 lg:grid-cols-4 group mt-4"
                 list={GitHubProjectList.filter((project) => project.stargazers_count >= 5)
                     .sort((a, b) => (BigInt(a.stargazers_count) > BigInt(b.stargazers_count) ? -1 : 0))
                     .map((project) => {

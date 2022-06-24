@@ -7,10 +7,10 @@ import ThemeModeSwitch from "./theme-mode-switch";
 type LinkProperties = { path: string; title: string; icon?: ReactElement };
 type Links = LinkProperties[];
 
-const createLink = ({ path, title, icon }: LinkProperties): ReactElement => {
+const createLink = ({ path, title, icon }: LinkProperties, onClick): ReactElement => {
     if (icon) {
         return (
-            <Link href={path} title={title}>
+            <Link href={path} title={title} onClick={onClick}>
                 <span className="sr-only">{title}</span>
                 {icon}
             </Link>
@@ -18,7 +18,7 @@ const createLink = ({ path, title, icon }: LinkProperties): ReactElement => {
     }
 
     return (
-        <Link href={path} title={title}>
+        <Link href={path} title={title} onClick={onClick}>
             {title}
         </Link>
     );
@@ -47,16 +47,23 @@ const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ mi
                                 onClick={() => setState(!state)}
                             >
                                 {state ? (
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 dark:fill-white" viewBox="0 0 20 20">
                                         <path
                                             fillRule="evenodd"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                             clipRule="evenodd"
+                                            fill="currentColor"
+                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                         />
                                     </svg>
                                 ) : (
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-6 w-6 dark:fill-white"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" fill="currentColor" />
                                     </svg>
                                 )}
                             </button>
@@ -73,7 +80,7 @@ const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ mi
                                 {midNavigation.map((item, index: number) => (
                                     // eslint-disable-next-line react/no-array-index-key
                                     <li key={index} className="mt-8 mb-8 lg:mt-0 lg:mb-0">
-                                        {createLink(item)}
+                                        {createLink(item, () => setState(!state))}
                                     </li>
                                 ))}
                             </ul>
@@ -84,7 +91,7 @@ const Navigation: FC<{ midNavigation?: Links; rightNavigation?: Links }> = ({ mi
                                 {rightNavigation.map((item, index: number) => (
                                     // eslint-disable-next-line react/no-array-index-key
                                     <li key={index} className="mt-8 mb-8 lg:mt-0 lg:mb-0 flex-auto">
-                                        {createLink(item)}
+                                        {createLink(item, () => setState(!state))}
                                     </li>
                                 ))}
                             </ul>

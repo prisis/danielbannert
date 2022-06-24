@@ -44,10 +44,10 @@ const IndexPage: FC = () => (
                         </p>
                     </div>
                 </div>
-                <div className="w-full md:w-1/2 md:px-3">
-                    <h2 className="pt-5 text-sm font-bold tracking-widest uppercase text-zenith">Open Source Projects</h2>
+                <div className="w-full md:w-1/2">
+                    <h2 className="pt-5 text-sm font-bold tracking-widest uppercase text-zenith md:ml-5">Open Source Projects</h2>
                     <ProjectList
-                        ulClasses="grid gap-4 md:grid-cols-2 group mt-4"
+                        ulClasses="grid gap-4 lg:grid-cols-2 group mt-4 md:ml-5"
                         waterFall
                         list={GitHubProjectList.filter((project) => project.stargazers_count >= 5)
                             .sort((a, b) => (BigInt(a.stargazers_count) > BigInt(b.stargazers_count) ? -1 : 0))
