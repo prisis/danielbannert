@@ -12,7 +12,9 @@ const Footer: FC = () => (
                 <Link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" boldText={false} underline external>
                     CC BY-NC-SA 4.0
                 </Link>{" "}
-                © 2021 Daniel Bannert. All rights reserved.
+                © 2021 Daniel Bannert.
+                <br />
+                All rights reserved.
             </p>
             <nav className="flex flex-wrap">
                 <Link href="/impress" title="Impress" key="footer-impress">

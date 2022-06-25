@@ -1,11 +1,16 @@
 import compression from "compression";
 import express from "express";
 import path from "node:path";
+import process from "node:process";
 import url from "node:url";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { loadEnv } from "vite";
 import { createPageRenderer } from "vite-plugin-ssr";
 
 const isProduction = process.env.NODE_ENV === "production";
 const root = `${path.dirname(url.fileURLToPath(import.meta.url))}/..`;
+
+Object.assign(process.env, loadEnv(process.env.NODE_ENV as string, process.cwd()));
 
 async function startServer() {
     const app = express();
@@ -27,7 +32,12 @@ async function startServer() {
         app.use(viteDevelopmentServer.middlewares);
     }
 
-    const view = createPageRenderer({ viteDevServer: viteDevelopmentServer, isProduction, root });
+    const view = createPageRenderer({
+        base: process.env.VITE_DOMAIN || "/",
+        viteDevServer: viteDevelopmentServer,
+        isProduction,
+        root,
+    });
 
     // eslint-disable-next-line consistent-return
     app.get("*", async (request, response, next) => {

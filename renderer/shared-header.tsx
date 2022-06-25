@@ -27,18 +27,15 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
                 || "I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful."
             }
         />
-        <meta property="og:image" content="/assets/twitter_card.png" />
+        <meta property="og:image" content={`${import.meta.env.BASE_URL}assets/twitter_card.png`} />
         <meta
             property="og:image:alt"
             content="I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful."
         />
         <meta property="og:locale" content="en_GB" />
         <meta property="og:type" content="website" />
-        <meta
-            property="og:url"
-            content={`https://www.danielbannert.com/${pageContext?.pageExports?.documentProps?.pageUrl?.trimStart().replace(/^\/+/g, "")}`}
-        />
-        <link rel="canonical" href={`https://www.danielbannert.com/${pageContext?.pageExports?.documentProps?.pageUrl?.trimStart().replace(/^\/+/g, "")}`} />
+        <meta property="og:url" content={`${import.meta.env.BASE_URL}${pageContext?.pageExports?.documentProps?.pageUrl?.trimStart().replace(/^\/+/g, "")}`} />
+        <link rel="canonical" href={`${import.meta.env.BASE_URL}${pageContext?.pageExports?.documentProps?.pageUrl?.trimStart().replace(/^\/+/g, "")}`} />
 
         <link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-touch-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-touch-icon-60x60.png" />
@@ -104,12 +101,12 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="228x228" href="/assets/coast-228x228.png" />
-        <link rel="manifest" href="/assets/manifest.json" />
-        <link rel="shortcut icon" href="/assets/favicon.ico" />
-        <link rel="yandex-tableau-widget" href="/assets/yandex-browser-manifest.json" />
+        <link rel="manifest" href={`${import.meta.env.BASE_URL}assets/manifest.json`} />
+        <link rel="shortcut icon" href={`${import.meta.env.BASE_URL}assets/favicon.ico`} />
+        <link rel="yandex-tableau-widget" href={`${import.meta.env.BASE_URL}assets/yandex-browser-manifest.json`} />
         <meta name="msapplication-TileColor" content="#fff" />
         <meta name="msapplication-TileImage" content="/assets/mstile-144x144.png" />
-        <meta name="msapplication-config" content="/assets/browserconfig.xml" />
+        <meta name="msapplication-config" content={`${import.meta.env.BASE_URL}assets/browserconfig.xml`} />
         <meta name="theme-color" content="#fff" />
 
         <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="UUUYFLMH" defer />

@@ -9,7 +9,10 @@
         "url": "https://www.danielbannert.com"
     },
     "scripts": {
-        "build": "tsc && cross-env NODE_ENV='production' vite build && cross-env NODE_ENV='production' vite build --ssr && cross-env NODE_ENV='production' vite-plugin-ssr prerender",
+        "build": "tsc && pnpm run build:client && pnpm run build:ssr && pnpm run build:prerender",
+        "build:client": "cross-env NODE_ENV='production' vite build --base /",
+        "build:ssr": "cross-env NODE_ENV='production' vite build --ssr",
+        "build:prerender": "cross-env NODE_ENV='production' vite-plugin-ssr prerender --noExtraDir",
         "postbuild": "react-snap",
         "build:github-list": "esno ./bin/generate-github-projects-list.ts",
         "clean": "rm -rf node_modules && rm -rf dist",

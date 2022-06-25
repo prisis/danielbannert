@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import react from "@vitejs/plugin-react";
+import process from "node:process";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { defineConfig, loadEnv } from "vite";
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -13,6 +14,7 @@ export default defineConfig(async ({ mode }) => {
     Object.assign(process.env, loadEnv(mode, process.cwd()));
 
     return {
+        base: process.env.VITE_DOMAIN,
         plugins: [
             react(),
             ssr(),
@@ -33,5 +35,6 @@ export default defineConfig(async ({ mode }) => {
                 ],
             }),
         ],
+        clearScreen: false,
     };
 });
