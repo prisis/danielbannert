@@ -192,3 +192,9 @@ const Error = ({ is404 }: { is404: boolean }) => {
 };
 
 export default Error;
+
+// eslint-disable-next-line unicorn/prevent-abbreviations
+export const documentProps = {
+    title: "404 - Daniel Bannert",
+    pageUrl: "/404",
+};
