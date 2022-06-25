@@ -18,6 +18,11 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@_prisis_" />
+        <meta name="twitter:image" content={`${import.meta.env.BASE_URL}assets/twitter_card.png`} />
+        <meta
+            name="twitter:image:alt"
+            content="I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful."
+        />
 
         <meta property="og:title" content={pageContext?.pageExports?.documentProps?.title || "Daniel Bannert"} />
         <meta
