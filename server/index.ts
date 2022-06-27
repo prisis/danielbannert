@@ -33,7 +33,7 @@ async function startServer() {
     }
 
     const view = createPageRenderer({
-        base: process.env.VITE_DOMAIN || "/",
+        baseAssets: process.env.VITE_DOMAIN || "/",
         viteDevServer: viteDevelopmentServer,
         isProduction,
         root,
