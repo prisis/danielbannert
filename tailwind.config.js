@@ -1,12 +1,13 @@
-// eslint-disable-next-line unicorn/prefer-module
 module.exports = {
-    content: ["index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    content: ["index.html", "./components/**/*.{jsx,tsx}", "./layout/**/*.{jsx,tsx}", "./pages/**/*.{jsx,tsx}"],
     darkMode: "class",
+    plugins: [
+        // eslint-disable-next-line import/no-extraneous-dependencies
+        require("@tailwindcss/typography"),
+        require("tailwindcss-font-inter"),
+    ],
     theme: {
         extend: {
-            fontFamily: {
-                "noto-sans": ["Nunito Sans", "Helvetica Neue", "Helvetica", "Arial", "Noto Sans SC", "sans-serif"],
-            },
             height: {
                 240: "240px",
                 320: "320px",
@@ -17,8 +18,4 @@ module.exports = {
             },
         },
     },
-    plugins: [
-        // eslint-disable-next-line import/no-extraneous-dependencies,unicorn/prefer-module
-        require("@tailwindcss/typography"),
-    ],
 };

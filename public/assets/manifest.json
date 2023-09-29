@@ -1,0 +1,9 @@
+{
+    "manifest_version": 2,
+    "name": "Daniel Bannert",
+    "version": "0.0.0",
+    "short_name": "DB",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff"
+}

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable unicorn/no-process-exit */
-let requiredVersion = require("fs").readFileSync(".nvmrc", { encoding: "utf8" }).trim();
+let requiredVersion = require("node:fs").readFileSync(".nvmrc", { encoding: "utf8" }).trim();
 
 if (!requiredVersion.includes("v")) {
     requiredVersion = `v${requiredVersion}`;

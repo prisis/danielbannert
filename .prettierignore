@@ -2,8 +2,7 @@
 .env*
 *.ico
 *.lock
-db/migrations
 dist
 CHANGELOG.md
 
-__docs__/mui
+index.html

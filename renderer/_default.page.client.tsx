@@ -1,53 +1,56 @@
-import NProgress from "nprogress";
+import { done, start } from "nprogress";
 import type { Root } from "react-dom/client";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
-import type { PageContextBuiltInClient } from "vite-plugin-ssr/client";
-import { useClientRouter } from "vite-plugin-ssr/client/router";
 
-import PageShell from "../src/layout/page-shell";
+import PageShell from "../layout/page-shell";
 import SharedHeader from "./shared-header";
-import type { PageContext } from "./types";
+import type { PageContextClient } from "./types";
 
-function onTransitionStart() {
-    NProgress.start();
-}
-function onTransitionEnd() {
-    NProgress.done();
-}
+// eslint-disable-next-line import/exports-last,import/no-unused-modules,@typescript-eslint/explicit-module-boundary-types
+export const onTransitionStart = () => {
+    start();
+};
+// eslint-disable-next-line import/exports-last,@typescript-eslint/explicit-module-boundary-types,import/no-unused-modules
+export const onTransitionEnd = () => {
+    done();
+};
 
 let root: Root;
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const { hydrationPromise } = useClientRouter({
-    render(pageContext: PageContextBuiltInClient & PageContext) {
-        const { Page, pageProps, isHydration } = pageContext;
 
-        const page = (
-            <PageShell pageContext={pageContext}>
-                <HelmetProvider>
-                    <SharedHeader pageContext={pageContext} />
-                    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                    <Page {...pageProps} />
-                </HelmetProvider>
-            </PageShell>
-        );
+const render = (pageContext: PageContextClient): void => {
+    const { Page, isHydration, pageProps } = pageContext;
 
-        const container = document.querySelector("#page-view")!;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (!Page) {
+        throw new Error("Client-side render() hook expects pageContext.Page to be defined");
+    }
 
-        if (isHydration) {
-            root = hydrateRoot(container, page);
-        } else {
-            if (!root) {
-                root = createRoot(container);
-            }
+    const page = (
+        <PageShell pageContext={pageContext}>
+            <HelmetProvider>
+                <SharedHeader pageContext={pageContext} />
+                {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                <Page {...pageProps} />
+            </HelmetProvider>
+        </PageShell>
+    );
 
-            root.render(page);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const container = document.querySelector("#page-view")!;
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (isHydration) {
+        root = hydrateRoot(container, page);
+    } else {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (!root) {
+            root = createRoot(container);
         }
-    },
-    onTransitionStart,
-    onTransitionEnd,
-});
 
-hydrationPromise.catch((error) => {
-    throw error;
-});
+        root.render(page);
+    }
+};
+
+// eslint-disable-next-line import/no-unused-modules
+export { render };

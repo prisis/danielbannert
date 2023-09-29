@@ -1,16 +1,29 @@
 import { renderToString } from "react-dom/server";
-import { HelmetProvider, HelmetServerState } from "react-helmet-async";
-import type { PageContextBuiltIn } from "vite-plugin-ssr";
+import type { HelmetServerState } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { dangerouslySkipEscape, escapeInject } from "vite-plugin-ssr";
+import { dangerouslySkipEscape, escapeInject } from "vike/server";
 
-import PageShell from "../src/layout/page-shell";
+import PageShell from "../layout/page-shell";
 import SharedHeader from "./shared-header";
-import type { PageContext } from "./types";
+import type { PageContextServer } from "./types.d";
 
-export const render = async (pageContext: PageContextBuiltIn & PageContext) => {
+const render = async (
+    pageContext: PageContextServer,
+): Promise<{
+    documentHtml: unknown;
+    pageContext: Record<string, unknown>;
+}> => {
     // See https://vite-plugin-ssr.com/head
     const { Page, pageProps } = pageContext;
+
+    // This render() hook only supports SSR, see https://vike.dev/render-modes for how to modify render() to support SPA
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (!Page) {
+        throw new Error("My render() hook expects pageContext.Page to be defined");
+    }
+
+    // eslint-disable-next-line @arthurgeron/react-usememo/require-usememo
     const helmetContext: { helmet?: HelmetServerState } = {};
 
     const view = renderToString(
@@ -24,11 +37,12 @@ export const render = async (pageContext: PageContextBuiltIn & PageContext) => {
     );
 
     const { helmet } = helmetContext;
-    const head = (helmet as HelmetServerState).title.toString()
-        + (helmet as HelmetServerState).priority.toString()
-        + (helmet as HelmetServerState).meta.toString()
-        + (helmet as HelmetServerState).link.toString()
-        + (helmet as HelmetServerState).script.toString();
+    const head =
+        (helmet as HelmetServerState).title.toString() +
+        (helmet as HelmetServerState).priority.toString() +
+        (helmet as HelmetServerState).meta.toString() +
+        (helmet as HelmetServerState).link.toString() +
+        (helmet as HelmetServerState).script.toString();
 
     const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
@@ -50,4 +64,8 @@ export const render = async (pageContext: PageContextBuiltIn & PageContext) => {
     };
 };
 
-export const passToClient = ["pageProps", "documentProps", "someAsyncProps"];
+// See https://vike.dev/data-fetching
+const passToClient = ["pageProps", "documentProps", "someAsyncProps", "urlPathname"];
+
+// eslint-disable-next-line import/no-unused-modules
+export { passToClient, render };

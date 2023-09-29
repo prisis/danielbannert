@@ -1,0 +1,40 @@
+import "../renderer/index.css";
+
+import type { FC, PropsWithChildren } from "react";
+import { StrictMode } from "react";
+import AnimatedCursor from "react-animated-cursor";
+
+import Footer from "../components/footer";
+import Navigation from "../components/navigation";
+import { PageContextProvider } from "../context/use-page-context";
+import type { PageContext } from "../renderer/types";
+
+const PageShell: FC<PropsWithChildren<{ pageContext: PageContext }>> = ({ children, pageContext }) => (
+    <StrictMode>
+        <PageContextProvider pageContext={pageContext}>
+            <div className="font-feature-default relative min-h-screen w-full antialiased font-inter">
+                <Navigation />
+                <div className="relative mt-48 flex w-full flex-col items-center justify-center align-middle">{children}</div>
+                <Footer />
+            </div>
+            <AnimatedCursor
+                innerScale={1}
+                innerSize={8}
+                /* eslint-disable-next-line @arthurgeron/react-usememo/require-usememo */
+                innerStyle={{
+                    backgroundColor: "var(--cursor-color)",
+                }}
+                outerAlpha={0}
+                outerScale={2}
+                outerSize={50}
+                /* eslint-disable-next-line @arthurgeron/react-usememo/require-usememo */
+                outerStyle={{
+                    border: "1px solid var(--cursor-color)",
+                }}
+                showSystemCursor
+            />
+        </PageContextProvider>
+    </StrictMode>
+);
+
+export default PageShell;

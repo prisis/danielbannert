@@ -1,27 +1,26 @@
-!.eslintrc.js
-!**/.eslintrc.js
-**/lib
-lib
-**/dist
-dist
-**/dist-types
-dist-types
 node_modules
-.out
-public
+
 coverage
+dist
+__fixtures__
 
-.cache
-**/.next
-lerna.json
-.vscode
-.yarn/**
+.prettierrc.cjs
+_meta.*.json
 
-**/temp/**
-
+inject-react-import.js
+vite.config.ts
+tsup.config.ts
+tsconfig.json
+.eslintrc.cjs
+tailwind.config.js
+verify-node-version.cjs
+commitlint.config.cjs
+postcss.config.cjs
+.lintstagedrc.cjs
 pnpm-lock.yaml
-.pnpm-store/
 
-/.tsbuildinfo
+vite-env.d.ts
+renderer/shared-header.tsx
 
-src/vite-env.d.ts
+bench
+README.md
