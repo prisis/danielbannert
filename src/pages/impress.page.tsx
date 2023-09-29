@@ -3,9 +3,9 @@ import type { FC } from "react";
 import GridBackground from "../components/grid_background";
 import Link from "../components/link";
 
-const ImpressPage: FC = () => (
+export const Page: FC = () => (
     <GridBackground>
-        <section className="relative container mx-auto px-4 lg:px-8 py-12 mx-auto space-y-8 overflow-hidden">
+        <section className="container relative mx-auto space-y-8 overflow-hidden px-4 py-12 lg:px-8">
             <div className="container prose prose-lg dark:prose-invert">
                 <h1>Impressum</h1>
                 <h3>Angaben gem&auml;&szlig; &sect; 5 TMG</h3>
@@ -25,7 +25,7 @@ const ImpressPage: FC = () => (
                 <h3>Streitschlichtung</h3>
                 <p>
                     Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-                    <Link href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://ec.europa.eu/consumers/odr" rel="noopener noreferrer" target="_blank">
                         https://ec.europa.eu/consumers/odr
                     </Link>
                     .<br /> Unsere E-Mail-Adresse finden Sie oben im Impressum.
@@ -70,10 +70,8 @@ const ImpressPage: FC = () => (
     </GridBackground>
 );
 
-export default ImpressPage;
-
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export const documentProps = {
-    title: "Impressum - Daniel Bannert",
     pageUrl: "/impress",
+    title: "Impressum - Daniel Bannert",
 };

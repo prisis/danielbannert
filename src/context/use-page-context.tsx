@@ -6,11 +6,11 @@ import { createContext, useContext } from "react";
 
 import type { PageContext } from "../../renderer/types";
 
-const Context = createContext<PageContext>(undefined as any);
+const Context = createContext<PageContext>({} as PageContext);
 
-// eslint-disable-next-line max-len
-export const PageContextProvider: FC<PropsWithChildren<{ pageContext: PageContext }>> = ({ pageContext, children }) => (
+export const PageContextProvider: FC<PropsWithChildren<{ pageContext: PageContext }>> = ({ children, pageContext }) => (
     <Context.Provider value={pageContext}>{children}</Context.Provider>
 );
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const usePageContext = () => useContext(Context);

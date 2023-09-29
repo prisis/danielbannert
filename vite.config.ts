@@ -1,13 +1,9 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import react from "@vitejs/plugin-react";
 import process from "node:process";
-// eslint-disable-next-line import/no-extraneous-dependencies
+
+import react from "@vitejs/plugin-react";
+import ssr from "vike/plugin";
 import { defineConfig, loadEnv } from "vite";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ViteFaviconsPlugin } from "vite-plugin-favicon2";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import ssr from "vite-plugin-ssr/plugin";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig(async ({ mode }) => {
@@ -15,26 +11,41 @@ export default defineConfig(async ({ mode }) => {
 
     return {
         base: process.env.VITE_DOMAIN,
+        build: {
+            outDir: "./dist/",
+        },
+        clearScreen: false,
+        optimizeDeps: { include: ['react/jsx-runtime'] },
         plugins: [
-            react(),
-            ssr(),
+            react({
+                jsxRuntime: "automatic",
+            }),
+            ssr({
+                prerender: {
+                    noExtraDir: true,
+                    parallel: 1, // Can be `number` or `boolean`
+                    partial: true,
+                },
+            }),
             ViteFaviconsPlugin({
-                logo: "assets/favicon.svg",
                 inject: false,
+                logo: "assets/favicon.svg",
             }),
             viteStaticCopy({
                 targets: [
                     {
-                        src: "assets/avatar.jpeg",
                         dest: "assets",
+                        src: "assets/avatar.jpeg",
                     },
                     {
-                        src: "assets/twitter_card.png",
                         dest: "assets",
+                        src: "assets/twitter_card.png",
                     },
                 ],
             }),
         ],
-        clearScreen: false,
+        root: "src/",
+
+        test: {},
     };
 });

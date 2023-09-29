@@ -1,11 +1,13 @@
-import { Octokit, RestEndpointMethodTypes } from "@octokit/rest";
 import { env } from "node:process";
+
+import type { RestEndpointMethodTypes } from "@octokit/rest";
+import { Octokit } from "@octokit/rest";
 
 const octokit = new Octokit({
     auth: env.VITE_GITHUB_AUTH_TOKEN,
 });
 
-const githubRepoCache: { [key: string]: RestEndpointMethodTypes["repos"]["listForOrg"]["response"] & { stargazers_count?: number } } = {};
+const githubRepoCache: Record<string, RestEndpointMethodTypes["repos"]["listForOrg"]["response"] & { stargazers_count?: number }> = {};
 
 export default async function getRepo(url: string): Promise<any> {
     const ownerAndRepo = url.replace("https://github.com/", "");
@@ -16,15 +18,15 @@ export default async function getRepo(url: string): Promise<any> {
     }
 
     // Compare: https://docs.github.com/en/rest/reference/repos/#list-organization-repositories
-    return octokit.rest.repos
+    return await octokit.rest.repos
         .get({
             owner: owner as string,
             repo: repo as string,
         })
         .then(({ data }) => {
-            // @ts-ignore
+            // @ts-expect-error
             githubRepoCache[ownerAndRepo] = data;
-            // @ts-ignore
+            // @ts-expect-error
             return data;
         })
         .catch((error) => {

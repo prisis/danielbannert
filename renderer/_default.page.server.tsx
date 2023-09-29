@@ -1,16 +1,22 @@
 import { renderToString } from "react-dom/server";
-import { HelmetProvider, HelmetServerState } from "react-helmet-async";
-import type { PageContextBuiltIn } from "vite-plugin-ssr";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { dangerouslySkipEscape, escapeInject } from "vite-plugin-ssr";
+import type { HelmetServerState } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
+import { dangerouslySkipEscape, escapeInject } from "vike/server";
 
 import PageShell from "../src/layout/page-shell";
 import SharedHeader from "./shared-header";
-import type { PageContext } from "./types";
+import type { PageContextServer } from "./types";
 
-export const render = async (pageContext: PageContextBuiltIn & PageContext) => {
+// eslint-disable-next-line import/no-unused-modules,@typescript-eslint/explicit-module-boundary-types
+export const render = async (pageContext: PageContextServer) => {
     // See https://vite-plugin-ssr.com/head
     const { Page, pageProps } = pageContext;
+
+    // This render() hook only supports SSR, see https://vike.dev/render-modes for how to modify render() to support SPA
+    if (!Page) {
+        throw new Error("My render() hook expects pageContext.Page to be defined");
+    }
+
     const helmetContext: { helmet?: HelmetServerState } = {};
 
     const view = renderToString(
@@ -24,16 +30,21 @@ export const render = async (pageContext: PageContextBuiltIn & PageContext) => {
     );
 
     const { helmet } = helmetContext;
-    const head = (helmet as HelmetServerState).title.toString()
-        + (helmet as HelmetServerState).priority.toString()
-        + (helmet as HelmetServerState).meta.toString()
-        + (helmet as HelmetServerState).link.toString()
-        + (helmet as HelmetServerState).script.toString();
+    const head =
+        (helmet as HelmetServerState).title.toString() +
+        (helmet as HelmetServerState).priority.toString() +
+        (helmet as HelmetServerState).meta.toString() +
+        (helmet as HelmetServerState).link.toString() +
+        (helmet as HelmetServerState).script.toString();
+
+  // For assets living `public/`, we need to manually inject the Base URL:
+  const manifestUrl = `${import.meta.env.VITE_DOMAIN}manifest.json`
 
     const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
+        <link rel="manifest" href="${manifestUrl}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         ${dangerouslySkipEscape(head)}
       </head>
@@ -50,4 +61,6 @@ export const render = async (pageContext: PageContextBuiltIn & PageContext) => {
     };
 };
 
-export const passToClient = ["pageProps", "documentProps", "someAsyncProps"];
+// See https://vike.dev/data-fetching
+// eslint-disable-next-line import/no-unused-modules
+export const passToClient = ["pageProps", "documentProps", "someAsyncProps", "urlPathname"];

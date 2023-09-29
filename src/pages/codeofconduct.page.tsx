@@ -3,9 +3,9 @@ import type { FC } from "react";
 import GridBackground from "../components/grid_background";
 import Link from "../components/link";
 
-const ImpressPage: FC = () => (
+export const Page: FC = () => (
     <GridBackground>
-        <section className="relative container mx-auto px-4 lg:px-8 py-12 mx-auto space-y-8 overflow-hidden">
+        <section className="container relative mx-auto space-y-8 overflow-hidden px-4 py-12 lg:px-8">
             <div className="container prose prose-lg dark:prose-invert">
                 <h1 id="contributor-covenant-code-of-conduct">Contributor Covenant Code of Conduct</h1>
                 <h2 id="our-pledge">Our Pledge</h2>
@@ -117,10 +117,8 @@ const ImpressPage: FC = () => (
     </GridBackground>
 );
 
-export default ImpressPage;
-
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export const documentProps = {
-    title: "Code of Conduct - Daniel Bannert",
     pageUrl: "/code-of-conduct",
+    title: "Code of Conduct - Daniel Bannert",
 };

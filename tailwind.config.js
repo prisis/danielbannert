@@ -1,7 +1,10 @@
-// eslint-disable-next-line unicorn/prefer-module
 module.exports = {
     content: ["index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     darkMode: "class",
+    plugins: [
+        // eslint-disable-next-line import/no-extraneous-dependencies
+        require("@tailwindcss/typography"),
+    ],
     theme: {
         extend: {
             fontFamily: {
@@ -17,8 +20,4 @@ module.exports = {
             },
         },
     },
-    plugins: [
-        // eslint-disable-next-line import/no-extraneous-dependencies,unicorn/prefer-module
-        require("@tailwindcss/typography"),
-    ],
 };

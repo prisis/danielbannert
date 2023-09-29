@@ -1,9 +1,6 @@
-@import "../node_modules/tailwindcss/base.css";
-
-/* purgecss start ignore */
-@import "../node_modules/tailwindcss/components.css";
-@import "../node_modules/tailwindcss/utilities.css";
-/* purgecss end ignore */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 #nprogress {
     pointer-events: none;

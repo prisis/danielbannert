@@ -1,63 +1,47 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "display": "Node 16",
-    "baseUrl": ".",
+    "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node18/tsconfig"],
+    "display": "React + Node 18",
     "compilerOptions": {
-        "baseUrl": ".",
-        "module": "ESNext",
-        "target": "ESNext",
-
-        "lib": ["DOM", "DOM.Iterable", "esnext"],
-
+        "baseUrl": "./",
+        "target": "ES2021",
+        "module": "ES2022",
+        "lib": ["DOM", "DOM.Iterable", "ES2021"],
+        "moduleResolution": "Bundler",
+        "resolvePackageJsonExports": true,
         "jsx": "react-jsx",
-
         "noEmit": true,
-        "strict": true,
-        "alwaysStrict": true,
         "declaration": true,
         "allowJs": true,
-
-        /* Additional Checks */
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noUncheckedIndexedAccess": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-
-        // "strictNullChecks": true,
-        // "strictBindCallApply": true,
+        "alwaysStrict": true,
+        "strictNullChecks": true,
+        "strictBindCallApply": true,
         "strictFunctionTypes": true,
-        // "strictPropertyInitialization": true,
-        // "noImplicitAny": true,
-        // "noImplicitThis": true,
-        "useUnknownInCatchVariables": true,
         "stripInternal": true,
-
-        /* Module Resolution Options */
-        "moduleResolution": "node",
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+        "useUnknownInCatchVariables": true,
         "isolatedModules": true,
-        //        "importsNotUsedAsValues": "error",
         "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
         "inlineSources": false,
-
+        "removeComments": true,
         "incremental": true,
-        "tsBuildInfoFile": ".tsbuildinfo"
+        "tsBuildInfoFile": ".tsbuildinfo",
+        "noPropertyAccessFromIndexSignature": true,
+        "exactOptionalPropertyTypes": false,
+        "skipLibCheck": true,
+        "types": ["vite/client"]
     },
     "include": [
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "server/**/*.ts",
-        "renderer/**/*.tsx",
-        "bin/**/*.ts",
-        "lib/**/.ts",
+        "src/**/*",
+        "server/**/*",
+        "renderer/**/*",
+        "bin/**/*",
+        "lib/**/*",
         "vitest.config.ts",
         "types.d.ts",
         "vite.config.ts",
-        "__tests__/**/*.ts",
-        "__tests__/**/*.tsx"
+        "__tests__/**/*"
     ],
     "exclude": ["dist", "node_modules"]
 }

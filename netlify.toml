@@ -1,10 +1,6 @@
 [build.environment]
-  NODE_VERSION = "16"
-  NPM_FLAGS="--version"
-
-[[plugins]]
-  package = "/.netlify/netlify-plugin-pnpm"
+  NODE_VERSION = "18"
 
 [build]
-  command = "npx pnpm@7 install --store-dir=.pnpm --frozen-lockfile && npx pnpm@7 run build:github-list && npx pnpm@7 run build"
+  command = "pnpm run build:github-list && pnpm run build"
   publish = "dist/client"

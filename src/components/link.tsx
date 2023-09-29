@@ -1,43 +1,40 @@
-import type {
-    AnchorHTMLAttributes, DetailedHTMLProps, FC, HTMLAttributeAnchorTarget, PropsWithChildren,
-} from "react";
+import type { AnchorHTMLAttributes, DetailedHTMLProps, FC, PropsWithChildren } from "react";
 
 import { usePageContext } from "../context/use-page-context";
 
 const Link: FC<
-PropsWithChildren<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>> & {
-    boldText?: boolean;
-    baseColor?: string;
-    hoverColor?: string;
-    darkColor?: string;
-    darkHoverColor?: string;
-    underline?: boolean;
-    activeColor?: string;
-    darkActiveColor?: string;
-    external?: boolean;
-}
+    PropsWithChildren<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>> & {
+        activeColor?: string;
+        baseColor?: string;
+        boldText?: boolean;
+        darkActiveColor?: string;
+        darkColor?: string;
+        darkHoverColor?: string;
+        external?: boolean;
+        hoverColor?: string;
+        underline?: boolean;
+    }
 > = ({
-    href,
-    className = "transition-colors",
+    activeColor = "text-lime-500",
     baseColor = "text-gray-600",
-    hoverColor = "hover:text-lime-500",
+    boldText,
+    children,
+    className = "transition-colors",
+    darkActiveColor = "dark:text-lime-500",
     darkColor = "dark:text-white",
     darkHoverColor = "dark:hover:text-lime-500",
-    activeColor = "text-lime-500",
-    darkActiveColor = "dark:text-lime-500",
-    boldText,
-    underline = false,
     external = false,
+    hoverColor = "hover:text-lime-500",
+    href,
     target,
-    children,
+    underline = false,
     ...other
 }) => {
     const pageContext = usePageContext();
-    const linkTarget = href?.includes("http") ? "_blank" : ((target || "_self") as HTMLAttributeAnchorTarget);
+    const linkTarget = href?.includes("http") ? "_blank" : target ?? "_self";
 
     return (
         <a
-            href={href}
             className={[
                 "transition-colors",
                 underline ? "underline" : "",
@@ -51,6 +48,7 @@ PropsWithChildren<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTM
             ]
                 .filter(Boolean)
                 .join(" ")}
+            href={href}
             target={linkTarget}
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...other}
@@ -61,12 +59,12 @@ PropsWithChildren<DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTM
                 <>
                     <span className="sr-only">Opens in a new tab</span>
                     <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="ml-1 mt-1 w-3 h-3"
                         aria-hidden="true"
-                        role="img"
+                        className="ml-1 mt-1 h-3 w-3"
                         fill="currentColor"
+                        role="img"
                         viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
                     >
                         <path d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z" />
                     </svg>
