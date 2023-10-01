@@ -5,17 +5,18 @@ import ssr from "vike/plugin";
 import { defineConfig, loadEnv } from "vite";
 import { ViteFaviconsPlugin } from "vite-plugin-favicon2";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig(async ({ mode }) => {
     Object.assign(process.env, loadEnv(mode, process.cwd()));
 
     return {
-        base: process.env.VITE_DOMAIN,
+        base: process.env["VITE_DOMAIN"] as string,
         build: {
-            outDir: "./dist/",
+            outDir: "../dist/",
         },
         clearScreen: false,
-        optimizeDeps: { include: ['react/jsx-runtime'] },
+        optimizeDeps: { include: ["react/jsx-runtime"] },
         plugins: [
             react({
                 jsxRuntime: "automatic",
@@ -29,17 +30,18 @@ export default defineConfig(async ({ mode }) => {
             }),
             ViteFaviconsPlugin({
                 inject: false,
-                logo: "assets/favicon.svg",
+                logo: "public/assets/favicon.svg",
             }),
+            ViteImageOptimizer({}),
             viteStaticCopy({
                 targets: [
                     {
                         dest: "assets",
-                        src: "assets/avatar.jpeg",
+                        src: "public/assets/avatar.jpeg",
                     },
                     {
                         dest: "assets",
-                        src: "assets/twitter_card.png",
+                        src: "public/assets/twitter_card.png",
                     },
                 ],
             }),

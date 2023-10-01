@@ -4,12 +4,10 @@ module.exports = {
     plugins: [
         // eslint-disable-next-line import/no-extraneous-dependencies
         require("@tailwindcss/typography"),
+        require('tailwindcss-font-inter'),
     ],
     theme: {
         extend: {
-            fontFamily: {
-                "noto-sans": ["Nunito Sans", "Helvetica Neue", "Helvetica", "Arial", "Noto Sans SC", "sans-serif"],
-            },
             height: {
                 240: "240px",
                 320: "320px",

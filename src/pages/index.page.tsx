@@ -1,74 +1,153 @@
+import { DribbbleLogo, GithubLogo, LinkedinLogo, TwitterLogo } from "@phosphor-icons/react";
 import type { FC } from "react";
+import { useRef } from "react";
 
 import GitHubProjectList from "../../data/github-projects-list.json";
 import Link from "../components/link";
 import ProjectList from "../components/project-list";
+import createLink from "../utils/create-link";
 
 // eslint-disable-next-line import/no-unused-modules
-export const Page: FC = () => (
-    <section className="relative">
-        <div className="container mx-auto items-center space-y-8 overflow-hidden px-4 py-12 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap items-center sm:-mx-3">
-                <div className="w-full md:w-1/2 md:px-3">
-                    <div className="prose w-full space-y-6 pb-6 dark:prose-invert md:prose-lg lg:prose-xl sm:max-w-md sm:pr-5 md:space-y-4 md:pb-0 lg:max-w-lg lg:space-y-8 lg:pr-0 xl:space-y-9">
-                        <h1>Daniel Bannert</h1>
-                        <p>
-                            Hey, I am Daniel Bannert, a passionate self-taught Full Stack Software Engineer, Consultant and Open Source Enthusiast. <br />
-                            <br /> I take great care in the experience, architecture, and code quality of the things I build. Collaboration is everything to me,
-                            and a highlight of my career is when my work gets to become something that helps the community or industry as a whole.
-                        </p>
-                        <p className="mt-2">
-                            Find me on{" "}
-                            <Link external href="https://github.com/prisis" title="GitHub">
-                                GitHub
-                            </Link>
-                            ,{" "}
-                            <Link external href="https://twitter.com/_prisis_" title="Twitter">
-                                Twitter
-                            </Link>
-                            <br />
-                            Mail me at{" "}
-                            <Link href="mailto:d.bannert@anolilab.de" title="Mail">
-                                d.bannert@anolilab.de
-                            </Link>
-                        </p>
-                        <p>
-                            If you like my works, consider sponsoring me on{" "}
-                            <Link external href="https://github.com/sponsors/prisis" title="GitHub Sponsor">
-                                GitHub Sponsor
-                            </Link>{" "}
-                            or{" "}
-                            <Link external href="https://opencollective.com/_prisis_" title="open collective">
-                                open collective
-                            </Link>{" "}
-                            to keep them sustainable.
-                        </p>
+export const Page: FC = () => {
+    const socialLinks = useRef([
+        {
+            external: true,
+            icon: <GithubLogo className="mx-auto h-6 w-6" />,
+            path: "https://github.com/prisis",
+            title: "Github",
+        },
+        {
+            external: true,
+            icon: <TwitterLogo className="mx-auto h-6 w-6" />,
+            path: "https://twitter.com/_prisis_",
+            title: "Twitter",
+        },
+        {
+            external: true,
+            icon: <DribbbleLogo className="mx-auto h-6 w-6" />,
+            path: "https://dribbble.com/danielbannert",
+            title: "Dribbble",
+        },
+        {
+            external: true,
+            icon: <LinkedinLogo className="mx-auto h-6 w-6" />,
+            path: "https://www.linkedin.com/in/daniel-bannert-b3635a99/",
+            title: "LinkedIn",
+        },
+    ]);
+
+    return (
+        <>
+            <div
+                className="relative w-full"
+                style={{
+                    background: "url('/assets/bg-pattern.png')",
+                }}
+            >
+                <div className="container relative z-10 mx-auto flex flex-col gap-4 px-8 py-5 font-semibold uppercase md:flex-row lg:px-0">
+                    <span className="text-zinc-400">Open Source Enthusiast</span>
+                    <span className="text-zinc-500">Senior Fullstack Developer</span>
+                </div>
+
+                <h1 className="-ml-1.5 mb-8 w-full overflow-hidden text-[85px] font-bold uppercase text-white md:-ml-3 md:-mt-10 md:mb-0 md:text-[200px]">Daniel Bannert</h1>
+
+                <div className="container mx-auto flex flex-col gap-4 px-8 pb-5 font-semibold uppercase md:flex-row lg:px-0">
+                    <span className="text-zinc-500">Frontend Developer</span>
+                    <span className="text-zinc-400">Backend Developer</span>
+                    <span className="text-zinc-500">Graphic Designer</span>
+                </div>
+
+                <div className="container mx-auto">
+                    <div className="my-32 flex items-end">
+                        <div className="mx-auto hidden md:block">
+                            <div className="group relative ml-72 h-24 w-24 rounded-full border-8 border-zinc-200 opacity-75">
+                                <h3 className="sr-only">Scroll down</h3>
+                                <div className="scroll-downs">
+                                    <div className="mouse-y group-hover:border-lime-600">
+                                        <div className="scroller" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="w-full px-8 md:w-72 lg:px-0">
+                            <ul className="flex items-center justify-center space-x-6">
+                                {socialLinks.current.map((item, index: number) => (
+                                    // eslint-disable-next-line react/no-array-index-key
+                                    <li className="flex-auto lg:my-0" key={index}>
+                                        {createLink(item, false, () => {})}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div className="w-full md:w-1/2">
-                    <h2 className="text-zenith pt-5 text-sm font-bold uppercase tracking-widest md:ml-5">Open Source Projects</h2>
-                    <ProjectList
-                        list={GitHubProjectList.filter((project) => project.stargazers_count >= 5)
-                            .sort((a, b) => (BigInt(a.stargazers_count) > BigInt(b.stargazers_count) ? -1 : 0))
-                            .slice(0, 5)
-                            .map((project) => {
-                                return {
-                                    description: project.description,
-                                    language: project.language,
-                                    stars: project.stargazers_count,
-                                    title: project.full_name,
-                                    url: project.html_url,
-                                };
-                            })}
-                        showMore
-                        ulClasses="grid gap-4 lg:grid-cols-2 group mt-4 md:ml-5"
-                        waterFall
-                    />
+                <p className="absolute bottom-0 right-0 p-12 pr-8 uppercase text-zinc-500 md:pr-12">Over 12 years of experience</p>
+            </div>
+
+            <div className="container mx-auto flex flex-col gap-12 px-8 py-64 md:flex-row md:gap-4 lg:px-0">
+                <div className="w-full md:w-4/12">
+                    <h3 className="text-3xl font-bold">
+                        Who the <span className="pointer-events-none text-zinc-300">f@#%</span> <br /> is Daniel Bannert?
+                    </h3>
+                </div>
+                <div className="prose prose-2xl prose-zinc w-full md:w-8/12">
+                    <p>
+                        I'm a passionate self-taught Full Stack Software Engineer and Open Source Enthusiast. <br />I take great care in the experience,
+                        architecture, and code quality of the things I build. Collaboration is everything to me, and a highlight of my career is when my work
+                        gets to become something that helps the community or industry as a whole.
+                    </p>
+                    <p className="mt-2">
+                        Find me on{" "}
+                        <Link external href="https://github.com/prisis" title="GitHub">
+                            GitHub
+                        </Link>
+                        ,{" "}
+                        <Link external href="https://twitter.com/_prisis_" title="Twitter">
+                            Twitter
+                        </Link>
+                        <br />
+                        Mail me at{" "}
+                        <Link href="mailto:d.bannert@anolilab.de" title="Mail">
+                            d.bannert@anolilab.de
+                        </Link>
+                    </p>
                 </div>
             </div>
-        </div>
-    </section>
-);
+
+            <div className="relative h-96 w-full overflow-hidden shadow-inner">
+                <div
+                    className="h-full w-full bg-cover bg-fixed bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url('assets/charu-jain-vuipFCLsIKU-unsplash.jpg')" }}
+                    title="Photo by Charu Jain"
+                />
+            </div>
+
+            <div className="mx:gap-4 container mx-auto flex gap-12 px-8 py-64 md:gap-4 lg:px-0">
+                <div className="w-full md:w-4/12">
+                    <h3 className="mb-4 text-3xl font-bold">Crafted with love.</h3>
+                    <span>These are a selection of my open source projects.</span>
+                </div>
+            </div>
+
+            <div className="w-full">
+                <ProjectList
+                    list={GitHubProjectList.filter((project) => project.stargazers_count >= 5)
+                        .sort((a, b) => (BigInt(a.stargazers_count) > BigInt(b.stargazers_count) ? -1 : 0))
+                        .map((project) => {
+                            return {
+                                description: project.description,
+                                language: project.language,
+                                stars: project.stargazers_count,
+                                title: project.full_name,
+                                url: project.html_url,
+                            };
+                        })}
+                    showMore
+                />
+            </div>
+        </>
+    );
+};
 
 // eslint-disable-next-line unicorn/prevent-abbreviations,import/no-unused-modules
 export const documentProps = {

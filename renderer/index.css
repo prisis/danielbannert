@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    font-family: "Inter", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    --cursor-color: rgb(132,204,22);
+}
+
+html.dark-mode {
+    --cursor-color: #fff;
+}
+
+@supports (font-variation-settings: normal) {
+    :root {
+        font-family: "Inter var", sans-serif;
+    }
+}
+
 #nprogress {
     pointer-events: none;
 }
@@ -25,7 +44,9 @@
     right: 0px;
     width: 100px;
     height: 100%;
-    box-shadow: 0 0 10px #88cc16, 0 0 5px #88cc16;
+    box-shadow:
+        0 0 10px #88cc16,
+        0 0 5px #88cc16;
     opacity: 1;
 
     -webkit-transform: rotate(3deg) translate(0px, -4px);
@@ -80,5 +101,36 @@
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+/**
+ * Mousewheel
+ */
+.scroll-downs {
+    @apply absolute w-[24px] h-[35px] m-auto inset-0;
+}
+.mouse-y {
+    @apply w-[3px] h-[24px] opacity-75 box-content px-2 py-1 rounded-[25px] border-2 border-solid border-zinc-400;
+}
+.scroller {
+    @apply w-[3px] h-2.5 bg-zinc-400 rounded-[25%];
+    animation-name: scroll;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+    animation-iteration-count: infinite;
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(15px);
+        opacity: 0;
     }
 }

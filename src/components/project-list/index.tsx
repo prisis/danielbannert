@@ -1,57 +1,65 @@
+import { ArrowRight } from "@phosphor-icons/react";
 import type { FC } from "react";
 
 import Link from "../link";
-import style from "./index.module.css";
 
 const ProjectList: FC<{
     list: { description: string; language: string; stars: number; title: string; url: string }[];
     showMore?: boolean;
-    ulClasses?: string;
-    waterFall?: boolean;
-}> = ({ list, showMore = false, ulClasses = "grid gap-4 md:grid-cols-2 group mt-4", waterFall = false }) => (
-    <ul className={ulClasses}>
-        {list.map(({ description, language, stars, title, url }, index) => {
-            let waterFallClasses = "";
-
-            if (waterFall) {
-                waterFallClasses = index % 2 === 0 ? "lg:mb-4" : "lg:mt-4";
-            }
-
-            return (
-                <li
-                    className={`bg-white shadow-md transition duration-200 ease-in-out hover:scale-105 hover:shadow-lg dark:bg-zinc-700${waterFallClasses} ${style.githubLogo}`}
-                    key={title}
-                >
-                    <a className="block p-5" href={url} rel="noopener noreferrer" target="_blank">
-                        <p className="text-zenith text-xs font-bold uppercase tracking-widest">{language}</p>
-                        <h3 className="text-zenith mt-4 text-lg font-semibold leading-tight" itemProp="name">
-                            {title}
-                        </h3>
-                        <p className="text-md mt-4">{description}</p>
-                        <div className="mt-2 flex items-center">
-                            <div className="h-8 w-8 p-2">
-                                <svg aria-hidden="true" className="-mt-px h-full w-full fill-current" viewBox="0 0 46.4 46.4">
-                                    <path d="M21.6 2c.3-.6.9-1 1.6-1 .7 0 1.3.4 1.6 1l5.8 11.7c.3.5.8.9 1.4 1l12.8 1.9c.7.1 1.2.6 1.4 1.2.2.6 0 1.4-.5 1.8l-9.3 9.1c-.4.4-.6 1-.5 1.6l2.2 12.9c.1.7-.2 1.4-.7 1.8-.6.4-1.3.5-1.9.1L24 39c-.5-.3-1.1-.3-1.7 0l-11.5 6.1c-.6.3-1.3.3-1.9-.1-.6-.4-.8-1.1-.7-1.8l2.2-12.9c.1-.6-.1-1.2-.5-1.6l-9.4-9c-.5-.5-.7-1.2-.5-1.8.2-.6.8-1.1 1.4-1.2l12.9-1.9c.6-.1 1.1-.5 1.4-1L21.6 2z" />
-                                </svg>
+}> = ({ list, showMore = false }) => (
+    <>
+        <ul className="flex flex-col">
+            {list.map(({ description, language, title, url }) => (
+                <li className="border-b border-zinc-100 bg-zinc-50 py-12 transition-all last:border-none hover:bg-white hover:py-16" key={title}>
+                    <div className="container mx-auto">
+                        <a className="block p-5" href={url} rel="noopener noreferrer" target="_blank">
+                            <div className="flex w-full items-center">
+                                <div className="prose prose-zinc">
+                                    <h3 itemProp="name">{title}</h3>
+                                    <p className="text-xs font-bold uppercase">{language}</p>
+                                    <p className="mt-4">{description}</p>
+                                </div>
+                                <div className="grow" />
+                                <div className="prose flex gap-4">
+                                    <span className="relative z-10 hidden font-bold uppercase before:absolute before:-left-6 before:-top-3.5 before:-z-10 before:inline-block before:h-14 before:w-14 before:rounded-full before:bg-zinc-200 before:transition-all before:hover:bg-lime-500 md:block">
+                                        View Project
+                                    </span>{" "}
+                                    <ArrowRight className="mt-2 h-4 w-4" />
+                                </div>
                             </div>
-                            <span className="-mt-px text-xs font-semibold leading-none tracking-wider" data-gh-api={url}>
-                                {stars}
-                                <span className="sr-only">stars</span>
-                            </span>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </li>
-            );
-        })}
+            ))}
+        </ul>
+
+        <div className="mx:gap-4 container mx-auto flex gap-12 px-8 pt-32 md:gap-4 lg:px-0">
+            <p className="prose prose-2xl prose-zinc mt-8">
+                If you like my work, consider sponsoring me on{" "}
+                <Link external href="https://github.com/sponsors/prisis" title="GitHub Sponsor">
+                    GitHub Sponsor
+                </Link>{" "}
+                or{" "}
+                <Link external href="https://opencollective.com/_prisis_" title="open collective">
+                    open collective
+                </Link>{" "}
+                to keep them sustainable.
+            </p>
+        </div>
 
         {showMore && (
-            <li className="flex items-center justify-center">
-                <Link className="mt-8 border p-3 hover:border-2 hover:border-lime-500 lg:mt-0" href="/projects">
-                    Show more
+            <div className="mx:gap-4 container mx-auto flex gap-12 px-8 pb-64 pt-32 md:gap-4 lg:px-0">
+                <Link className="mt-8 w-full" href="/projects">
+                    <div className="w-full md:w-4/12">
+                        <span className="text-xs uppercase">There's more</span>
+                        <h3 className="mt-4 flex text-3xl font-bold">
+                            view all projects <ArrowRight className="ml-12 mt-2 h-6 w-6" />
+                        </h3>
+                    </div>
                 </Link>
-            </li>
+            </div>
         )}
-    </ul>
+    </>
 );
 
 export default ProjectList;

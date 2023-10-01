@@ -37,14 +37,10 @@ export const render = async (pageContext: PageContextServer) => {
         (helmet as HelmetServerState).link.toString() +
         (helmet as HelmetServerState).script.toString();
 
-  // For assets living `public/`, we need to manually inject the Base URL:
-  const manifestUrl = `${import.meta.env.VITE_DOMAIN}manifest.json`
-
     const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
-        <link rel="manifest" href="${manifestUrl}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         ${dangerouslySkipEscape(head)}
       </head>

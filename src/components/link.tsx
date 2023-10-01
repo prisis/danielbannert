@@ -16,7 +16,7 @@ const Link: FC<
     }
 > = ({
     activeColor = "text-lime-500",
-    baseColor = "text-gray-600",
+    baseColor = "text-zinc-500",
     boldText,
     children,
     className = "transition-colors",
