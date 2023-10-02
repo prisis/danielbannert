@@ -4,16 +4,18 @@ import type { RestEndpointMethodTypes } from "@octokit/rest";
 import { Octokit } from "@octokit/rest";
 
 const octokit = new Octokit({
-    auth: env.VITE_GITHUB_AUTH_TOKEN,
+    auth: env["VITE_GITHUB_AUTH_TOKEN"],
 });
 
 const githubRepoCache: Record<string, RestEndpointMethodTypes["repos"]["listForOrg"]["response"] & { stargazers_count?: number }> = {};
 
-export default async function getRepo(url: string): Promise<any> {
+export default async function getRepo(url: string): Promise<unknown> {
     const ownerAndRepo = url.replace("https://github.com/", "");
     const [owner, repo]: string[] = ownerAndRepo.split("/");
 
+    // eslint-disable-next-line security/detect-object-injection
     if (githubRepoCache[ownerAndRepo]) {
+        // eslint-disable-next-line security/detect-object-injection
         return githubRepoCache[ownerAndRepo];
     }
 
@@ -24,9 +26,10 @@ export default async function getRepo(url: string): Promise<any> {
             repo: repo as string,
         })
         .then(({ data }) => {
-            // @ts-expect-error
+            // @ts-expect-error - We're adding a property to the data object.
+            // eslint-disable-next-line security/detect-object-injection
             githubRepoCache[ownerAndRepo] = data;
-            // @ts-expect-error
+
             return data;
         })
         .catch((error) => {

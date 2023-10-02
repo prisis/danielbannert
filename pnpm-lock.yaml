@@ -38,14 +38,14 @@ dependencies:
   react-helmet-async:
     specifier: ^1.3.0
     version: 1.3.0(react-dom@18.2.0)(react@18.2.0)
-  react-wrap-balancer:
-    specifier: ^1.1.0
-    version: 1.1.0(react@18.2.0)
 
 devDependencies:
   '@anolilab/eslint-config':
     specifier: ^14.0.17
     version: 14.0.17(@arthurgeron/eslint-plugin-react-usememo@2.0.1)(@babel/core@7.23.0)(eslint-plugin-editorconfig@4.0.3)(eslint-plugin-i@2.28.1)(eslint-plugin-jsx-a11y@6.7.1)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.2)(eslint-plugin-ssr-friendly@1.2.0)(eslint-plugin-tailwindcss@3.13.0)(eslint-plugin-validate-jsx-nesting@0.1.1)(eslint@8.50.0)(typescript@5.2.2)
+  '@anolilab/lint-staged-config':
+    specifier: ^2.0.13
+    version: 2.0.13(eslint@8.50.0)(husky@8.0.3)(lint-staged@14.0.1)(prettier@3.0.3)(vite@4.4.9)
   '@anolilab/prettier-config':
     specifier: ^5.0.11
     version: 5.0.11(prettier@3.0.3)
@@ -95,8 +95,8 @@ devDependencies:
     specifier: ^0.2.1
     version: 0.2.1
   '@types/react':
-    specifier: ^18.2.23
-    version: 18.2.23
+    specifier: ^18.2.24
+    version: 18.2.24
   '@types/react-dom':
     specifier: ^18.2.8
     version: 18.2.8
@@ -424,6 +424,44 @@ packages:
       - svelte
       - svelte-eslint-parser
       - vue-eslint-parser
+    dev: true
+
+  /@anolilab/lint-staged-config@2.0.13(eslint@8.50.0)(husky@8.0.3)(lint-staged@14.0.1)(prettier@3.0.3)(vite@4.4.9):
+    resolution: {integrity: sha512-bI3x4V4BZg25NtCoS5Zf8Hi5aKVsq0G9iWsiOWPig0e6r9XtNxwd2A7UeDcpedXL5Z2F/82MXXTrdhYoCTWJDQ==}
+    engines: {node: '>=18'}
+    requiresBuild: true
+    peerDependencies:
+      eslint: ^8.49.0
+      husky: ^8.x
+      jest: ^29.7.0
+      lint-staged: ^13.x || ^14.0.0
+      prettier: ^3.0.3
+      secretlint: ^7.0.7
+      stylelint: ^15.10.3
+      vite: ^4.4.9
+    peerDependenciesMeta:
+      eslint:
+        optional: true
+      jest:
+        optional: true
+      prettier:
+        optional: true
+      secretlint:
+        optional: true
+      stylelint:
+        optional: true
+      vite:
+        optional: true
+    dependencies:
+      '@anolilab/package-json-utils': 3.0.7
+      cross-env: 7.0.3
+      eslint: 8.50.0
+      find-up: 5.0.0
+      husky: 8.0.3
+      lint-staged: 14.0.1
+      prettier: 3.0.3
+      shell-quote: 1.8.1
+      vite: 4.4.9(@types/node@20.8.0)
     dev: true
 
   /@anolilab/package-json-utils@3.0.7:
@@ -3146,17 +3184,17 @@ packages:
   /@types/react-dom@18.2.8:
     resolution: {integrity: sha512-bAIvO5lN/U8sPGvs1Xm61rlRHHaq5rp5N3kp9C+NJ/Q41P8iqjkXSu0+/qu8POsjH9pNWb0OYabFez7taP7omw==}
     dependencies:
-      '@types/react': 18.2.23
+      '@types/react': 18.2.24
     dev: true
 
   /@types/react-helmet@6.1.7:
     resolution: {integrity: sha512-mUFOrdR3AIvHE8BEaqzfPEnR62xq5PHQJehhgNtj78x0d5NOxUCQ0j+r9OZ4RvB+prNZx9wvQnVW8ApFBX+fig==}
     dependencies:
-      '@types/react': 18.2.23
+      '@types/react': 18.2.24
     dev: true
 
-  /@types/react@18.2.23:
-    resolution: {integrity: sha512-qHLW6n1q2+7KyBEYnrZpcsAmU/iiCh9WGCKgXvMxx89+TYdJWRjZohVIo9XTcoLhfX3+/hP0Pbulu3bCZQ9PSA==}
+  /@types/react@18.2.24:
+    resolution: {integrity: sha512-Ee0Jt4sbJxMu1iDcetZEIKQr99J1Zfb6D4F3qfUWoR1JpInkY1Wdg4WwCyBjL257D0+jGqSl1twBjV8iCaC0Aw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -7816,20 +7854,8 @@ packages:
       ci-info: 3.3.1
     dev: true
 
-  /is-core-module@2.12.1:
-    resolution: {integrity: sha512-Q4ZuBAe2FUsKtyQJoQHlvP8OvBERxO3jEmy1I7hcRXcJBGGHFh/aJBswbXuS9sgrDH2QUO8ilkwNPHvHMd8clg==}
-    dependencies:
-      has: 1.0.3
-    dev: true
-
   /is-core-module@2.13.0:
     resolution: {integrity: sha512-Z7dk6Qo8pOCp3l4tsX2C5ZVas4V+UxwQodwZhLopL91TX8UyyHEXafPcyoeeWuLrwzHcr3igO78wNLwHJHsMCQ==}
-    dependencies:
-      has: 1.0.3
-    dev: true
-
-  /is-core-module@2.9.0:
-    resolution: {integrity: sha512-+5FPy5PnwmO3lvfMb0AsoPaBG+5KHUI0wYFXOtYPnVVVspTFUuMZNfNaNVRt3FZadstu2c8x23vykRW/NBoU6A==}
     dependencies:
       has: 1.0.3
     dev: true
@@ -11557,14 +11583,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /react-wrap-balancer@1.1.0(react@18.2.0):
-    resolution: {integrity: sha512-EhF3jOZm5Fjx+Cx41e423qOv2c2aOvXAtym2OHqrGeMUnwERIyNsRBgnfT3plB170JmuYvts8K2KSPEIerKr5A==}
-    peerDependencies:
-      react: '>=16.8.0 || ^17.0.0 || ^18'
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -12054,7 +12072,7 @@ packages:
     resolution: {integrity: sha512-Hhtrw0nLeSrFQ7phPp4OOcVjLPIeMnRlr5mcnVuMe7M/7eBn98A3hmFRLoFo3DLZkivSYwhRUJTyPyWAk56WLw==}
     hasBin: true
     dependencies:
-      is-core-module: 2.9.0
+      is-core-module: 2.13.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
@@ -12063,7 +12081,7 @@ packages:
     resolution: {integrity: sha512-Sb+mjNHOULsBv818T40qSPeRiuWLyaGMa5ewydRLFimneixmVy2zdivRl+AF6jaYPC8ERxGDmFSiqui6SfPd+g==}
     hasBin: true
     dependencies:
-      is-core-module: 2.12.1
+      is-core-module: 2.13.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
@@ -12495,6 +12513,10 @@ packages:
   /shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+    dev: true
+
+  /shell-quote@1.8.1:
+    resolution: {integrity: sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==}
     dev: true
 
   /side-channel@1.0.4:

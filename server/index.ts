@@ -10,20 +10,22 @@
 //  - vite-node (https://github.com/antfu/vite-node)
 //  - HatTip (https://github.com/hattipjs/hattip)
 //    - You can use Bati (https://batijs.github.io/) to scaffold a vike + HatTip app. Note that Bati generates apps that use the V1 design (https://vike.dev/migration/v1-design) and Vike packages (https://vike.dev/vike-packages)
+// eslint-disable-next-line import/no-unused-modules
 import { dirname } from "node:path";
 import process from "node:process";
 import url from "node:url";
 
 import compression from "compression";
 import express from "express";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { renderPage } from "vike/server";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { loadEnv } from "vite";
 
 const root = `${dirname(url.fileURLToPath(import.meta.url))}/..`;
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env["NODE_ENV"] === "production";
 
-Object.assign(process.env, loadEnv(process.env.NODE_ENV as string, process.cwd()));
+Object.assign(process.env, loadEnv(process.env["NODE_ENV"] as string, process.cwd()));
 
 // eslint-disable-next-line func-style
 async function startServer() {
@@ -35,6 +37,7 @@ async function startServer() {
     if (isProduction) {
         // In production, we need to serve our static assets ourselves.
         // (In dev, Vite's middleware serves our static assets.)
+        // eslint-disable-next-line import/no-extraneous-dependencies,unicorn/no-await-expression-member
         const sirv = (await import("sirv")).default;
 
         app.use(sirv(`${root}/dist/client`));
@@ -78,6 +81,7 @@ async function startServer() {
 
         const { body, earlyHints, headers, statusCode } = httpResponse;
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (response.writeEarlyHints !== undefined) {
             response.writeEarlyHints({ link: earlyHints.map((hint) => hint.earlyHintLink) });
         }
@@ -90,11 +94,13 @@ async function startServer() {
 
     });
 
-    const port = process.env.PORT || 3000;
+    const port = process.env["PORT"] ?? 3000;
 
     app.listen(port);
 
+    // eslint-disable-next-line no-console
     console.log(`Server running at http://localhost:${port}`);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-floating-promises,unicorn/prefer-top-level-await
 startServer();

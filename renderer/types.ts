@@ -7,18 +7,19 @@ import type {
     PageContextBuiltInServer,
 } from "vike/types";
 
-export type Page = (pageProperties: PageProps) => ReactElement;
-export type PageProps = Record<string, unknown>;
+type Page = (pageProperties: PageProperties) => ReactElement;
+type PageProperties = Record<string, unknown>;
 
-export type PageContextCustom = {
+type PageContextCustom = {
     Page: Page;
     exports: {
         documentProps?: {
             description?: string;
+            pageUrl?: string;
             title?: string;
         };
     };
-    pageProps?: PageProps;
+    pageProps?: PageProperties;
     urlPathname: string;
 };
 

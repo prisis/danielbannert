@@ -14,6 +14,9 @@ tsconfig.json
 tailwind.config.js
 verify-node-version.cjs
 commitlint.config.cjs
+postcss.config.cjs
+.lintstagedrc.cjs
+pnpm-lock.yaml
 
 src/vite-env.d.ts
 

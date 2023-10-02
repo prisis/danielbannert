@@ -1,6 +1,7 @@
 import { renderToString } from "react-dom/server";
 import type { HelmetServerState } from "react-helmet-async";
 import { HelmetProvider } from "react-helmet-async";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { dangerouslySkipEscape, escapeInject } from "vike/server";
 
 import PageShell from "../src/layout/page-shell";
@@ -13,10 +14,12 @@ export const render = async (pageContext: PageContextServer) => {
     const { Page, pageProps } = pageContext;
 
     // This render() hook only supports SSR, see https://vike.dev/render-modes for how to modify render() to support SPA
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!Page) {
         throw new Error("My render() hook expects pageContext.Page to be defined");
     }
 
+    // eslint-disable-next-line @arthurgeron/react-usememo/require-usememo
     const helmetContext: { helmet?: HelmetServerState } = {};
 
     const view = renderToString(

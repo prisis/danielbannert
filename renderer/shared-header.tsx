@@ -5,10 +5,10 @@ import type { PageContext } from "./types";
 
 const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
     <Helmet>
-        <title>{pageContext.exports.documentProps?.title || "Daniel Bannert"}</title>
+        <title>{pageContext.exports.documentProps?.title ?? "Daniel Bannert"}</title>
         <meta
             content={
-                pageContext.exports.documentProps?.description || "A Software Engineer, Consultant and Open Source Enthusiast from Regensburg (Germany)."
+                pageContext.exports.documentProps?.description ?? "A Software Engineer, Consultant and Open Source Enthusiast from Regensburg (Germany)."
             }
             name="description"
         />
@@ -24,10 +24,10 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
             name="twitter:image:alt"
         />
 
-        <meta content={pageContext.exports.documentProps?.title || "Daniel Bannert"} property="og:title" />
+        <meta content={pageContext.exports.documentProps?.title ?? "Daniel Bannert"} property="og:title" />
         <meta
             content={
-                pageContext.exports.documentProps?.description ||
+                pageContext.exports.documentProps?.description ??
                 "I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful."
             }
             property="og:description"
@@ -39,8 +39,8 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         />
         <meta content="en_GB" property="og:locale" />
         <meta content="website" property="og:type" />
-        <meta content={`${import.meta.env.BASE_URL}${pageContext.exports.documentProps?.pageUrl?.trimStart().replaceAll(/^\/+/g, "")}`} property="og:url" />
-        <link href={`${import.meta.env.BASE_URL}${pageContext.exports.documentProps?.pageUrl?.trimStart().replaceAll(/^\/+/g, "")}`} rel="canonical" />
+        <meta content={`${import.meta.env.BASE_URL}${pageContext.exports.documentProps?.pageUrl?.trimStart().replaceAll(/^\/+/gu, "")}`} property="og:url" />
+        <link href={`${import.meta.env.BASE_URL}${pageContext.exports.documentProps?.pageUrl?.trimStart().replaceAll(/^\/+/gu, "")}`} rel="canonical" />
 
         <link href="/public/assets/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57" />
         <link href="/public/assets/apple-touch-icon-60x60.png" rel="apple-touch-icon" sizes="60x60" />
@@ -114,7 +114,7 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <meta content={`${import.meta.env.BASE_URL}assets/browserconfig.xml`} name="msapplication-config" />
         <meta content="#fff" name="theme-color" />
 
-        <script data-site="UUUYFLMH" data-spa="auto" defer src="https://cdn.usefathom.com/script.js" />
+        {import.meta.env["FATHOM_SITE"] ?? (<script data-site={import.meta.env["FATHOM_SITE"]} data-spa="auto" defer src="https://cdn.usefathom.com/script.js" />)}
     </Helmet>
 );
 

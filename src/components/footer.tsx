@@ -4,14 +4,14 @@ import Link from "./link";
 
 const Footer: FC = () => (
     <footer aria-labelledby="footer-heading" className="relative w-full bg-zinc-900 py-64 text-zinc-100">
-        <div className="mx:gap-4 container mx-auto gap-12 px-8 md:gap-4 lg:px-0">
+        <div className="mx:gap-4 container mx-auto max-w-5xl gap-12 px-8 md:gap-4 2xl:max-w-7xl 2xl:px-0">
             <h2 className="sr-only" id="footer-heading">
                 Footer
             </h2>
 
             <div className="pb-32">
-                <h3 className="mb-6 md:mb-4 text-6xl md:text-8xl font-bold">Thanks for stopping by.</h3>
-                <p className="text-4xl md:text-7xl">Feel free to get in touch!</p>
+                <h3 className="mb-6 text-6xl font-bold md:mb-4 md:text-8xl">Thanks for stopping by.</h3>
+                <p className="text-4xl md:text-6xl">Feel free to get in touch!</p>
             </div>
 
             <span>
@@ -27,7 +27,7 @@ const Footer: FC = () => (
                     <Link external href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
                         CC BY-NC-SA 4.0
                     </Link>{" "}
-                    © 2021 Daniel Bannert.
+                    © {new Date().getFullYear()} Daniel Bannert.
                     <br />
                     All rights reserved.
                     <br />

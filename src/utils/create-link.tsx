@@ -9,7 +9,7 @@ interface LinkProperties {
     title: string;
 }
 
-const createLink = ({ external, icon, path, title }: LinkProperties, showOnlyText?: boolean, onClick?: MouseEventHandler<any>): ReactElement => {
+const createLink = ({ external, icon, path, title }: LinkProperties, showOnlyText?: boolean, onClick?: MouseEventHandler<unknown>): ReactElement => {
     if (icon && !showOnlyText) {
         return (
             <Link href={path} onClick={onClick} title={title}>
