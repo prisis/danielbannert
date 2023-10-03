@@ -6,6 +6,7 @@ import { defineConfig, loadEnv } from "vite";
 import { ViteFaviconsPlugin } from "vite-plugin-favicon2";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig(async ({ mode }) => {
     Object.assign(process.env, loadEnv(mode, process.cwd()));
@@ -21,16 +22,17 @@ export default defineConfig(async ({ mode }) => {
             react({
                 jsxRuntime: "automatic",
             }),
+            svgr(),
+            ViteFaviconsPlugin({
+                inject: false,
+                logo: "public/assets/favicon.svg",
+            }),
             ssr({
                 prerender: {
                     noExtraDir: true,
                     parallel: 1, // Can be `number` or `boolean`
                     partial: true,
                 },
-            }),
-            ViteFaviconsPlugin({
-                inject: false,
-                logo: "public/assets/favicon.svg",
             }),
             ViteImageOptimizer({}),
             viteStaticCopy({

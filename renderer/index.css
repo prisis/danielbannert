@@ -12,7 +12,17 @@ html {
 }
 
 html.dark-mode {
-    --cursor-color: #fff;
+    --cursor-color: #ffffff;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: #ffffff;
+  background: rgb(132,204,22);
+}
+
+::selection {
+  color: #ffffff;
+  background: rgb(132,204,22);
 }
 
 @supports (font-variation-settings: normal) {
@@ -133,4 +143,43 @@ html.dark-mode {
         transform: translateY(15px);
         opacity: 0;
     }
+}
+
+.loader {
+    @apply relative flex items-center justify-center w-full max-w-[14.6rem] my-[7.3rem] before:w-full before:shadow-[inset_0_0_0_1.7rem_#fff] before:pb-[100%] after:w-[calc(100%_-_1.7rem*2)] after:pb-[calc(100%_-_1.7rem*2)] after:shadow-[0_0_0_0_#fff];
+}
+.loader:before,
+.loader:after {
+    @apply content-[""] absolute rounded-[50%];
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    filter: drop-shadow(0 0 0.7555555556rem rgba(255, 255, 255, 0.75));
+}
+.loader:before {
+    animation-name: pulsA;
+}
+.loader:after {
+    animation-name: pulsB;
+}
+
+@keyframes pulsA {
+  0% {
+    box-shadow: inset 0 0 0 1.7rem #fff;
+    opacity: 1;
+  }
+  50%, 100% {
+    box-shadow: inset 0 0 0 0 #fff;
+    opacity: 0;
+  }
+}
+@keyframes pulsB {
+  0%, 50% {
+    box-shadow: 0 0 0 0 #fff;
+    opacity: 0;
+  }
+  100% {
+    box-shadow: 0 0 0 1.7rem #fff;
+    opacity: 1;
+  }
 }

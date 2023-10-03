@@ -6,7 +6,7 @@ import { dangerouslySkipEscape, escapeInject } from "vike/server";
 
 import PageShell from "../src/layout/page-shell";
 import SharedHeader from "./shared-header";
-import type { PageContextServer } from "./types";
+import type { PageContextServer } from "./types.d";
 
 // eslint-disable-next-line import/no-unused-modules,@typescript-eslint/explicit-module-boundary-types
 export const render = async (pageContext: PageContextServer) => {

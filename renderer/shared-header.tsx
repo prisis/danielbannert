@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { Helmet } from "react-helmet-async";
 
-import type { PageContext } from "./types";
+import type { PageContext } from "./types.d";
 
 const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
     <Helmet>
@@ -114,6 +114,7 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <meta content={`${import.meta.env.BASE_URL}assets/browserconfig.xml`} name="msapplication-config" />
         <meta content="#fff" name="theme-color" />
 
+        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
         {import.meta.env["FATHOM_SITE"] ?? (<script data-site={import.meta.env["FATHOM_SITE"]} data-spa="auto" defer src="https://cdn.usefathom.com/script.js" />)}
     </Helmet>
 );

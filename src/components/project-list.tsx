@@ -17,7 +17,7 @@ const ProjectList: FC<{
                         className={[
                             "container mx-auto max-w-5xl lg:transition-all px-8 lg:pl-10 lg:group-hover:pl-20 2xl:max-w-7xl 2xl:pr-0",
                             "xl:before:absolute xl:before:left-0 xl:before:top-[55%] xl:before:inline-block xl:before:h-0.5 xl:before:w-[6%] xl:before:bg-zinc-400 xl:before:transition-all xl:before:group-hover:w-[9%]",
-                            "xl:after:absolute xl:after:left-[9%] xl:after:transition-all xl:after:group-hover:left-[12%] xl:after:top-[49%] xl:after:content-[attr(after-dynamic-value)]"
+                            "xl:after:absolute xl:after:left-[9%] xl:after:transition-all xl:after:group-hover:left-[12%] xl:after:top-[49%] xl:after:content-[attr(after-dynamic-value)]",
                         ].join(" ")}
                     >
                         <a className="block py-5" href={url} rel="noopener noreferrer" target="_blank">
@@ -28,8 +28,8 @@ const ProjectList: FC<{
                                     <p className="mt-4">{description}</p>
                                 </div>
                                 <div className="grow" />
-                                <div className="prose flex gap-4">
-                                    <span className="relative z-10 hidden font-bold uppercase before:absolute before:-left-6 before:-top-3.5 before:-z-10 before:inline-block before:h-14 before:w-14 before:rounded-full before:bg-zinc-200 before:transition-all before:hover:bg-lime-500 md:block">
+                                <div className="prose prose-zinc flex gap-4">
+                                    <span className="relative z-10 hidden font-bold uppercase before:absolute before:-left-6 before:-top-3.5 before:-z-10 before:inline-block before:h-14 before:w-14 before:rounded-full before:bg-zinc-200 before:transition-all before:group-hover:bg-lime-500 md:block">
                                         View Project
                                     </span>{" "}
                                     <ArrowRight className="mt-2 h-4 w-4" />

@@ -1,4 +1,4 @@
-import { DribbbleLogo, GithubLogo, LinkedinLogo, TwitterLogo } from "@phosphor-icons/react";
+import { ArrowRight, DribbbleLogo, GithubLogo, LinkedinLogo, TwitterLogo } from "@phosphor-icons/react";
 import type { FC } from "react";
 import { useRef } from "react";
 
@@ -98,17 +98,26 @@ export const Page: FC = () => {
                         architecture, and code quality of the things I build. Collaboration is everything to me, and a highlight of my career is when my work
                         gets to become something that helps the community or industry as a whole.
                     </p>
-                    <p className="mt-2">
+
+                    <a className="my-20 block no-underline" href="https://resume.danielbannert.com" rel="noreferrer" target="_blank" title="Resume">
+                        <div className="prose prose-zinc flex gap-4">
+                            <span className="relative z-10 hidden font-bold uppercase before:absolute before:-left-6 before:-top-3.5 before:-z-10 before:inline-block before:h-14 before:w-14 before:rounded-full before:bg-zinc-200 before:transition-all before:hover:bg-lime-500 md:block">
+                                Check out my resume
+                            </span>{" "}
+                            <ArrowRight className="mt-1.5 h-4 w-4" />
+                        </div>
+                    </a>
+
+                    <p className="mt-2 text-base">
                         Find me on{" "}
                         <Link external href="https://github.com/prisis" title="GitHub">
                             GitHub
                         </Link>
                         ,{" "}
-                        <Link external href="https://twitter.com/_prisis_" title="Twitter">
+                        <Link className="mr-2" external href="https://twitter.com/_prisis_" title="Twitter">
                             Twitter
                         </Link>
-                        <br />
-                        Mail me at{" "}
+                        or Mail me at{" "}
                         <Link href="mailto:d.bannert@anolilab.de" title="Mail">
                             d.bannert@anolilab.de
                         </Link>

@@ -19,6 +19,7 @@ postcss.config.cjs
 pnpm-lock.yaml
 
 src/vite-env.d.ts
+renderer/shared-header.tsx
 
 bench
 README.md
