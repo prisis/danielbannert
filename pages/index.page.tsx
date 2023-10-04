@@ -2,6 +2,7 @@ import { ArrowRight, DribbbleLogo, GithubLogo, LinkedinLogo, TwitterLogo } from 
 import type { FC } from "react";
 import { useRef } from "react";
 
+import charuJainImageProperties from "../assets/charu-jain-vuipFCLsIKU-unsplash.jpg?jsx";
 import Link from "../components/link";
 import ProjectList from "../components/project-list";
 import GitHubProjectList from "../data/github-projects-list.json";
@@ -125,11 +126,14 @@ export const Page: FC = () => {
                 </div>
             </div>
 
-            <div className="relative h-96 w-full overflow-hidden shadow-inner">
-                <div
-                    className="h-full w-full bg-cover bg-fixed bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('assets/charu-jain-vuipFCLsIKU-unsplash.jpg')" }}
-                    title="Photo by Charu Jain"
+            <div className="relative h-96 w-full overflow-hidden shadow-inner [clip-path:inset(0)]">
+                <img
+                    /* eslint-disable-next-line react/jsx-props-no-spreading */
+                    {...charuJainImageProperties}
+                    alt="By Charu Jain"
+                    className="fixed left-0 top-0 h-screen w-screen object-cover"
+                    decoding="async"
+                    loading="lazy"
                 />
             </div>
 

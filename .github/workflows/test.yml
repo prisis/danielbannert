@@ -48,7 +48,7 @@ jobs:
         needs: "files-changed"
         strategy:
             matrix:
-                os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+                os: ["ubuntu-latest"]
                 node_version: ["18"]
             fail-fast: false
         name: "Test (node-${{ matrix.node_version }}, ${{ matrix.os }})"

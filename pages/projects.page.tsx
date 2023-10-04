@@ -1,5 +1,6 @@
 import type { FC } from "react";
 
+import clarkTibbsImageProperties from "../assets/clark-tibbs-oqStl2L5oxI-unsplash.jpg?jsx";
 import Link from "../components/link";
 import ProjectList from "../components/project-list";
 import GitHubProjectList from "../data/github-projects-list.json";
@@ -7,14 +8,19 @@ import GitHubProjectList from "../data/github-projects-list.json";
 // eslint-disable-next-line import/no-unused-modules
 export const Page: FC = () => (
     <>
-        <div className="relative h-96 w-full overflow-hidden shadow-inner">
-            <div
-                className="h-full w-full bg-cover bg-center bg-no-repeat md:bg-fixed"
-                style={{ backgroundImage: "url('assets/clark-tibbs-oqStl2L5oxI-unsplash.jpg')", backgroundPositionY: "85%" }}
-                title="Photo by Clark Tibbs"
+        <div className="relative h-48 w-full overflow-hidden bg-black shadow-inner [clip-path:inset(0)] md:h-96">
+            <img
+                /* eslint-disable-next-line react/jsx-props-no-spreading */
+                {...clarkTibbsImageProperties}
+                alt="By Clark Tibbs"
+                /* eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values */
+                className="fixed -top-[18%] left-0 h-screen w-screen object-contain md:object-cover lg:top-20 xl:-top-5 2xl:-top-[15%]"
+                decoding="async"
+                loading="lazy"
             />
         </div>
-        <div className="container mx-auto flex gap-4 pb-64 pt-32">
+
+        <div className="mx:gap-4 container mx-auto flex max-w-5xl gap-12 px-8 py-32 md:gap-4 2xl:max-w-7xl 2xl:px-0">
             <div className="w-full md:w-4/12">
                 <h1 className="mb-4 text-3xl font-bold">Open Source</h1>
                 <p>
