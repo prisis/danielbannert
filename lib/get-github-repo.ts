@@ -1,10 +1,14 @@
-import { env } from "node:process";
+import process from "node:process";
 
 import type { RestEndpointMethodTypes } from "@octokit/rest";
 import { Octokit } from "@octokit/rest";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { loadEnv } from "vite";
+
+Object.assign(process.env, loadEnv("", process.cwd()));
 
 const octokit = new Octokit({
-    auth: env["VITE_GITHUB_AUTH_TOKEN"],
+    auth: process.env["VITE_GITHUB_AUTH_TOKEN"],
 });
 
 const githubRepoCache: Record<string, RestEndpointMethodTypes["repos"]["listForOrg"]["response"] & { stargazers_count?: number }> = {};

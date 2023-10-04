@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unused-modules
 import { writeFileSync } from "node:fs";
-import { env, exit } from "node:process";
+import process from "node:process";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { loadEnv } from "vite";
@@ -9,7 +9,7 @@ import getRepo from "../lib/get-github-repo";
 
 Object.assign(process.env, loadEnv("", process.cwd()));
 
-const projects = env["VITE_GITHUB_PROJECTS"]?.split(",") ?? [];
+const projects = process.env["VITE_GITHUB_PROJECTS"]?.split(",") ?? [];
 
 // eslint-disable-next-line compat/compat
 Promise.all(projects.map(async (project: string) => await getRepo(project)))
@@ -42,12 +42,14 @@ Promise.all(projects.map(async (project: string) => await getRepo(project)))
 
         writeFileSync("./data/github-projects-list.json", JSON.stringify(preparedData, undefined, 2));
 
-        exit(0);
+        // eslint-disable-next-line unicorn/no-process-exit
+        process.exit(0);
     })
     // eslint-disable-next-line unicorn/prefer-top-level-await
     .catch((error) => {
         // eslint-disable-next-line no-console
         console.error(error);
 
-        exit(1);
+        // eslint-disable-next-line unicorn/no-process-exit
+        process.exit(1);
     });

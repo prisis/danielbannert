@@ -7,9 +7,7 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
     <Helmet>
         <title>{pageContext.exports.documentProps?.title ?? "Daniel Bannert"}</title>
         <meta
-            content={
-                pageContext.exports.documentProps?.description ?? "A Software Engineer, Consultant and Open Source Enthusiast from Regensburg (Germany)."
-            }
+            content={pageContext.exports.documentProps?.description ?? "A Software Engineer, Consultant and Open Source Enthusiast from Regensburg (Germany)."}
             name="description"
         />
 
@@ -115,7 +113,9 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <meta content="#fff" name="theme-color" />
 
         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-        {import.meta.env["FATHOM_SITE"] ?? (<script data-site={import.meta.env["FATHOM_SITE"]} data-spa="auto" defer src="https://cdn.usefathom.com/script.js" />)}
+        {import.meta.env["VITE_FATHOM_SITE"] ?? (
+            <script data-site={import.meta.env["VITE_FATHOM_SITE"]} data-spa="auto" defer src="https://cdn.usefathom.com/script.js" />
+        )}
     </Helmet>
 );
 
