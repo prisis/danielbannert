@@ -22,7 +22,7 @@ export default defineConfig(async ({ mode }) => {
     }
 
     return {
-        base: baseUrl,
+        base: `${baseUrl}/`,
         clearScreen: false,
         optimizeDeps: { include: ["react/jsx-runtime"] },
         plugins: [

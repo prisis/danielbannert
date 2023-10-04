@@ -31,7 +31,7 @@ const Card: FC<CardProperties> = ({ card, disabled, onClick, wrapperClasses }) =
         >
             <button
                 className={twMerge(
-                    clsx("absolute inset-0 h-full w-full cursor-pointer rounded-lg bg-zinc-900 opacity-0 transition-all delay-0 ease-in", {
+                    clsx("absolute inset-1 cursor-pointer rounded-lg bg-zinc-900 opacity-0 transition-all delay-0 ease-in", {
                         "opacity-100 delay-200 cursor-not-allowed z-20": card.isFlipped,
                     }),
                 )}
@@ -41,7 +41,7 @@ const Card: FC<CardProperties> = ({ card, disabled, onClick, wrapperClasses }) =
             </button>
             <button
                 className={twMerge(
-                    clsx("absolute inset-0 z-10 h-full w-full rounded-lg bg-zinc-900 opacity-100 transition-all delay-200 ease-in", {
+                    clsx("absolute inset-1 z-10 rounded-lg bg-zinc-900 opacity-100 transition-all delay-200 ease-in", {
                         "opacity-0 hidden delay-200": card.isFlipped,
                     }),
                 )}

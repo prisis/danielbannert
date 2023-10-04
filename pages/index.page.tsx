@@ -101,7 +101,7 @@ export const Page: FC = () => {
 
                     <a className="my-20 block no-underline" href="https://resume.danielbannert.com" rel="noreferrer" target="_blank" title="Resume">
                         <div className="prose prose-zinc flex gap-4">
-                            <span className="relative z-10 hidden font-bold uppercase before:absolute before:-left-6 before:-top-3.5 before:-z-10 before:inline-block before:h-14 before:w-14 before:rounded-full before:bg-zinc-200 before:transition-all before:hover:bg-lime-500 md:block">
+                            <span className="relative z-10 font-bold uppercase before:absolute before:-left-6 before:-top-3.5 before:-z-10 before:inline-block before:h-14 before:w-14 before:rounded-full before:bg-zinc-200 before:transition-all before:hover:bg-lime-500">
                                 Check out my resume
                             </span>{" "}
                             <ArrowRight className="mt-1.5 h-4 w-4" />
@@ -144,6 +144,7 @@ export const Page: FC = () => {
                 <ProjectList
                     list={GitHubProjectList.filter((project) => project.stargazers_count >= 5)
                         .sort((a, b) => (BigInt(a.stargazers_count) > BigInt(b.stargazers_count) ? -1 : 0))
+                        .slice(0, 5)
                         .map((project) => {
                             return {
                                 description: project.description,

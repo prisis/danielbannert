@@ -105,7 +105,7 @@ const MemoryContainer: FC = () => {
 
     if (checkWin()) {
         return (
-            <div className="w-full 2xl:h-96">
+            <div className="h-96 w-full">
                 <ConfettiAnimation />
                 <div className="flex flex-col items-center justify-center">
                     <h2 className="text-center text-4xl font-bold">You Win!</h2>
@@ -123,8 +123,8 @@ const MemoryContainer: FC = () => {
         <>
             {fields === undefined ? (
                 <div className="relative mb-12 grid w-full rounded-lg border border-zinc-600">
-                    <div className="flex w-full items-center justify-center 2xl:h-[564px]">
-                        <div className="loader" />
+                    <div className="flex h-[485px] w-full items-center justify-center md:h-[564px] 2xl:h-[564px]">
+                        <div className="loader p-12" />
                     </div>
                 </div>
             ) : (
