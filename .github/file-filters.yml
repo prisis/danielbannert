@@ -25,7 +25,5 @@ packages: &packages
     - ".github/workflows/test.yml"
     - ".github/workflows/lint.yml"
 
-nextra:
-    - "**/tsconfig*.json"
-    - "pnpm-lock.yaml"
-    - ".github/workflows/lint.yml"
+typescript_lintable:
+    - "**/*.t{s,sx}"

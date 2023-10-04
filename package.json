@@ -19,6 +19,7 @@
         "lint": "pnpm run lint:text && pnpm run lint:prettier && pnpm run lint:eslint",
         "lint:eslint": "eslint . --ext js,cjs,mjs,ts,tsx,json,yaml,yml,md,mdx --max-warnings=0 --config .eslintrc.cjs",
         "lint:eslint:fix": "pnpm run lint:eslint --fix",
+        "lint:types": "tsc --noEmit --skipLibCheck --pretty",
         "lint:prettier": "prettier --config=.prettierrc.cjs '**/*.{js,jsx,tsx,ts,less,md,json}'",
         "lint:prettier:fix": "prettier --config=.prettierrc.cjs --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
         "lint:staged": "lint-staged --verbose --concurrent false --debug",
@@ -131,6 +132,10 @@
             "info_on_disabling_jsonc_sort_keys_rule": false,
             "info_on_found_react_version": false
         }
+    },
+    "packageManager": "pnpm@8.7.0",
+    "engines": {
+        "node": ">=18.* <=20.*"
     },
     "reactSnap": {
         "source": "dist"

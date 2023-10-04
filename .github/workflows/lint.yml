@@ -26,6 +26,7 @@ jobs:
             frontend_lintable: "${{ steps.changes.outputs.frontend_lintable }}"
             markdown_lintable: "${{ steps.changes.outputs.markdown_lintable }}"
             yaml_lintable: "${{ steps.changes.outputs.yaml_lintable }}"
+            typescript_lintable: "${{ steps.changes.outputs.typescript_lintable }}"
         steps:
             - name: "Harden Runner"
               uses: "step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09" # v2.5.1
@@ -82,11 +83,47 @@ jobs:
             - name: "Verify the integrity of provenance attestations and registry signatures for installed dependencies"
               run: "pnpm audit signatures"
 
-            - name: "Build"
-              run: "pnpm run build:packages"
-
             - name: "lint"
               run: "pnpm run lint:eslint"
+
+    typescript-lint:
+        if: "needs.files-changed.outputs.typescript_lintable == 'true'"
+        needs: "files-changed"
+        name: "Lint (typescript)"
+        runs-on: "ubuntu-latest"
+        steps:
+            - name: "Harden Runner"
+              uses: "step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09" # v2.5.1
+              with:
+                  egress-policy: "audit"
+
+            - name: "Git checkout"
+              uses: "actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744" # v3.6.0
+              with:
+                  fetch-depth: 2
+              env:
+                  GIT_COMMITTER_NAME: "GitHub Actions Shell"
+                  GIT_AUTHOR_NAME: "GitHub Actions Shell"
+                  EMAIL: "github-actions[bot]@users.noreply.github.com"
+
+            - uses: "pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598" # v2.4.0
+              with:
+                  run_install: false
+
+            - name: "Use Node.js 18.x"
+              uses: "actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d" # v3.8.1
+              with:
+                  node-version: "18.x"
+                  cache: "pnpm"
+
+            - name: "Install packages"
+              run: "pnpm install --frozen-lockfile"
+
+            - name: "Verify the integrity of provenance attestations and registry signatures for installed dependencies"
+              run: "pnpm audit signatures"
+
+            - name: "lint"
+              run: "pnpm run lint:types"
 
     yaml-lint:
         if: "needs.files-changed.outputs.yaml_lintable == 'true'"
