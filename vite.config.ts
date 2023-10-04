@@ -11,8 +11,18 @@ import svgr from "vite-plugin-svgr";
 export default defineConfig(async ({ mode }) => {
     Object.assign(process.env, loadEnv(mode, process.cwd()));
 
+    let baseUrl = "http://0.0.0.0:3000";
+
+    if (process.env["NETLIFY"]) {
+        if (process.env["CONTEXT"] === "production") {
+            baseUrl = process.env["URL"] as string;
+        } else if (process.env["CONTEXT"] !== "production") {
+            baseUrl = process.env["DEPLOY_PRIME_URL"] as string;
+        }
+    }
+
     return {
-        base: process.env["VITE_DOMAIN"] as string,
+        base: baseUrl,
         clearScreen: false,
         optimizeDeps: { include: ["react/jsx-runtime"] },
         plugins: [
