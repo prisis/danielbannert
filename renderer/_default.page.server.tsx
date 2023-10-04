@@ -4,12 +4,16 @@ import { HelmetProvider } from "react-helmet-async";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { dangerouslySkipEscape, escapeInject } from "vike/server";
 
-import PageShell from "../src/layout/page-shell";
+import PageShell from "../layout/page-shell";
 import SharedHeader from "./shared-header";
 import type { PageContextServer } from "./types.d";
 
-// eslint-disable-next-line import/no-unused-modules,@typescript-eslint/explicit-module-boundary-types
-export const render = async (pageContext: PageContextServer) => {
+const render = async (
+    pageContext: PageContextServer,
+): Promise<{
+    documentHtml: unknown;
+    pageContext: Record<string, unknown>;
+}> => {
     // See https://vite-plugin-ssr.com/head
     const { Page, pageProps } = pageContext;
 
@@ -61,5 +65,7 @@ export const render = async (pageContext: PageContextServer) => {
 };
 
 // See https://vike.dev/data-fetching
+const passToClient = ["pageProps", "documentProps", "someAsyncProps", "urlPathname"];
+
 // eslint-disable-next-line import/no-unused-modules
-export const passToClient = ["pageProps", "documentProps", "someAsyncProps", "urlPathname"];
+export { passToClient, render };

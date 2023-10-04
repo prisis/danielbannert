@@ -1,8 +1,8 @@
 import type { FC } from "react";
 
-import GitHubProjectList from "../../data/github-projects-list.json";
 import Link from "../components/link";
 import ProjectList from "../components/project-list";
+import GitHubProjectList from "../data/github-projects-list.json";
 
 // eslint-disable-next-line import/no-unused-modules
 export const Page: FC = () => (

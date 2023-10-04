@@ -1,6 +1,7 @@
 node_modules
 
 coverage
+dist
 __fixtures__
 
 .prettierrc.cjs
@@ -18,7 +19,7 @@ postcss.config.cjs
 .lintstagedrc.cjs
 pnpm-lock.yaml
 
-src/vite-env.d.ts
+vite-env.d.ts
 renderer/shared-header.tsx
 
 bench

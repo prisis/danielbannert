@@ -1,8 +1,8 @@
 import { GameController } from "@phosphor-icons/react";
 // eslint-disable-next-line import/no-named-as-default
 import clsx from "clsx";
-import type { FC} from "react";
-import { useCallback , useEffect, useState } from "react";
+import type { FC } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { useMemoryCards } from "../../context/memory-context";

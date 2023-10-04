@@ -5,7 +5,7 @@ import ssr from "vike/plugin";
 import { defineConfig, loadEnv } from "vite";
 import { ViteFaviconsPlugin } from "vite-plugin-favicon2";
 import { viteStaticCopy } from "vite-plugin-static-copy";
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import svgr from "vite-plugin-svgr";
 
 export default defineConfig(async ({ mode }) => {
@@ -13,9 +13,6 @@ export default defineConfig(async ({ mode }) => {
 
     return {
         base: process.env["VITE_DOMAIN"] as string,
-        build: {
-            outDir: "../dist/",
-        },
         clearScreen: false,
         optimizeDeps: { include: ["react/jsx-runtime"] },
         plugins: [
@@ -31,7 +28,7 @@ export default defineConfig(async ({ mode }) => {
                 prerender: {
                     noExtraDir: true,
                     parallel: 1, // Can be `number` or `boolean`
-                    partial: true,
+                    partial: false,
                 },
             }),
             ViteImageOptimizer({}),
@@ -48,8 +45,9 @@ export default defineConfig(async ({ mode }) => {
                 ],
             }),
         ],
-        root: "src/",
 
-        test: {},
+        test: {
+            environment: "node",
+        },
     };
 });

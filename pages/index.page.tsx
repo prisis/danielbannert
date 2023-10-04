@@ -2,9 +2,9 @@ import { ArrowRight, DribbbleLogo, GithubLogo, LinkedinLogo, TwitterLogo } from 
 import type { FC } from "react";
 import { useRef } from "react";
 
-import GitHubProjectList from "../../data/github-projects-list.json";
 import Link from "../components/link";
 import ProjectList from "../components/project-list";
+import GitHubProjectList from "../data/github-projects-list.json";
 import createLink from "../utils/create-link";
 
 // eslint-disable-next-line import/no-unused-modules

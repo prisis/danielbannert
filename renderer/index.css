@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    font-family: "Inter", sans-serif;
-}
 
 html {
     scroll-behavior: smooth;
@@ -23,12 +20,6 @@ html.dark-mode {
 ::selection {
   color: #ffffff;
   background: rgb(132,204,22);
-}
-
-@supports (font-variation-settings: normal) {
-    :root {
-        font-family: "Inter var", sans-serif;
-    }
 }
 
 #nprogress {
@@ -173,6 +164,7 @@ html.dark-mode {
     opacity: 0;
   }
 }
+
 @keyframes pulsB {
   0%, 50% {
     box-shadow: 0 0 0 0 #fff;

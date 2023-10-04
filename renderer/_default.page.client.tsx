@@ -3,7 +3,7 @@ import type { Root } from "react-dom/client";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 
-import PageShell from "../src/layout/page-shell";
+import PageShell from "../layout/page-shell";
 import SharedHeader from "./shared-header";
 import type { PageContextClient } from "./types";
 
@@ -18,8 +18,7 @@ export const onTransitionEnd = () => {
 
 let root: Root;
 
-// eslint-disable-next-line import/no-unused-modules,@typescript-eslint/explicit-module-boundary-types
-export const render = (pageContext: PageContextClient) => {
+const render = (pageContext: PageContextClient): void => {
     const { Page, isHydration, pageProps } = pageContext;
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
@@ -52,3 +51,6 @@ export const render = (pageContext: PageContextClient) => {
         root.render(page);
     }
 };
+
+// eslint-disable-next-line import/no-unused-modules
+export { render };

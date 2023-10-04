@@ -1,12 +1,12 @@
-import "../../renderer/index.css";
+import "../renderer/index.css";
 
 import type { FC, PropsWithChildren } from "react";
 import { StrictMode } from "react";
 import AnimatedCursor from "react-animated-cursor";
 
-import type { PageContext } from "../../renderer/types";
 import Footer from "../components/footer";
 import { PageContextProvider } from "../context/use-page-context";
+import type { PageContext } from "../renderer/types";
 
 const PageShell: FC<PropsWithChildren<{ pageContext: PageContext }>> = ({ children, pageContext }) => (
     <StrictMode>

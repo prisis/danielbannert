@@ -4,7 +4,7 @@
 import type { FC, PropsWithChildren } from "react";
 import { createContext, useContext } from "react";
 
-import type { PageContext } from "../../renderer/types";
+import type { PageContext } from "../renderer/types";
 
 const Context = createContext<PageContext>({} as PageContext);
 

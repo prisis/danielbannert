@@ -1,4 +1,3 @@
-
 import { useMediaQuery } from "react-responsive";
 import type { ScreensConfig } from "tailwindcss/types/config";
 
