@@ -15,6 +15,7 @@ type PageContextCustom = {
     exports: {
         documentProps?: {
             description?: string;
+            navigationTitle?: string;
             pageUrl?: string;
             title?: string;
         };

@@ -9,10 +9,15 @@ interface LinkProperties {
     title: string;
 }
 
-const createLink = ({ external, icon, path, title }: LinkProperties, showOnlyText?: boolean, onClick?: MouseEventHandler<unknown>): ReactElement => {
+const createLink = (
+    { external, icon, path, title }: LinkProperties,
+    showOnlyText?: boolean,
+    onClick?: MouseEventHandler<unknown>,
+    className?: string,
+): ReactElement => {
     if (icon && !showOnlyText) {
         return (
-            <Link href={path} onClick={onClick} title={title}>
+            <Link className={className} href={path} onClick={onClick} title={title}>
                 <span className="sr-only">{title}</span>
                 {icon}
             </Link>
@@ -20,7 +25,7 @@ const createLink = ({ external, icon, path, title }: LinkProperties, showOnlyTex
     }
 
     return (
-        <Link external={external} href={path} onClick={onClick} title={title}>
+        <Link className={className} external={external} href={path} onClick={onClick} title={title}>
             {title}
         </Link>
     );
