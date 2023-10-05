@@ -54,6 +54,7 @@ export const Page: FC = () => (
 // eslint-disable-next-line unicorn/prevent-abbreviations,import/no-unused-modules
 export const documentProps = {
     description: "List of projects that I am proud of",
+    navigationTitle: "Projects",
     pageUrl: "/projects",
     title: "Projects - Daniel Bannert",
 };

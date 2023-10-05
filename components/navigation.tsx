@@ -1,6 +1,8 @@
 import { DribbbleLogo, GithubLogo, LinkedinLogo, TwitterLogo } from "@phosphor-icons/react";
 // eslint-disable-next-line import/no-named-as-default
 import clsx from "clsx";
+import type { Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import type { FC } from "react";
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
@@ -8,6 +10,36 @@ import { twMerge } from "tailwind-merge";
 import { useNavigationContext } from "../context/use-navigation-context";
 import { usePageContext } from "../context/use-page-context";
 import createLink from "../utils/create-link";
+
+const listVariants: Variants = {
+    closed: {
+        clipPath: "inset(10% 50% 90% 50% round 10px)",
+        transition: {
+            bounce: 0,
+            duration: 0.3,
+            type: "spring",
+        },
+    },
+    open: {
+        clipPath: "inset(0% 0% 0% 0% round 10px)",
+        transition: {
+            bounce: 0,
+            delayChildren: 0.3,
+            duration: 0.7,
+            staggerChildren: 0.05,
+            type: "spring",
+        },
+    },
+};
+
+const itemVariants: Variants = {
+    closed: { opacity: 0, transition: { duration: 0.2 }, y: 20 },
+    open: {
+        opacity: 1,
+        transition: { damping: 24, stiffness: 300, type: "spring" },
+        y: 0,
+    },
+};
 
 const Navigation: FC = () => {
     const mainLinks = useRef([
@@ -120,25 +152,35 @@ const Navigation: FC = () => {
                         hidden: !isOpen,
                     })}
                 >
-                    <nav className="mx-8 mt-10 flex">
-                        <ul className="flex flex-col gap-y-2">
+                    <motion.nav animate={isOpen ? "open" : "closed"} className="mx-8 mt-10 flex" initial={false}>
+                        <motion.ul className="flex flex-col gap-y-2" style={{ pointerEvents: isOpen ? "auto" : "none" }} variants={listVariants}>
                             {mainLinks.current.map((item, index: number) => (
                                 // eslint-disable-next-line react/no-array-index-key
-                                <li key={index}>{createLink(item, true, () => setIsOpen(!isOpen), {
-                                    baseColor: classes.links ?? "text-zinc-100"
-                                })}</li>
+                                <motion.li key={index} variants={itemVariants}>
+                                    {createLink(item, true, () => setIsOpen(!isOpen), {
+                                        baseColor: classes.links ?? "text-zinc-100",
+                                    })}
+                                </motion.li>
                             ))}
-                        </ul>
-                    </nav>
+                        </motion.ul>
+                    </motion.nav>
                     <div className="h-36 grow" />
-                    <ul className={clsx("mx-8 flex items-center justify-start gap-8")}>
-                        {socialLinks.current.map((item, index: number) => (
-                            // eslint-disable-next-line react/no-array-index-key
-                            <li key={index}>{createLink(item, false, () => {}, {
-                                baseColor: classes.links ?? "text-zinc-100"
-                            })}</li>
-                        ))}
-                    </ul>
+                    <motion.div animate={isOpen ? "open" : "closed"} className="mx-8" initial={false}>
+                        <motion.ul
+                            className="flex items-center justify-start gap-8"
+                            style={{ pointerEvents: isOpen ? "auto" : "none" }}
+                            variants={listVariants}
+                        >
+                            {socialLinks.current.map((item, index: number) => (
+                                // eslint-disable-next-line react/no-array-index-key
+                                <motion.li key={index} variants={itemVariants}>
+                                    {createLink(item, false, () => {}, {
+                                        baseColor: classes.links ?? "text-zinc-100",
+                                    })}
+                                </motion.li>
+                            ))}
+                        </motion.ul>
+                    </motion.div>
                 </div>
             </div>
             {!isTitleDisabled && context.exports.documentProps?.navigationTitle && (
