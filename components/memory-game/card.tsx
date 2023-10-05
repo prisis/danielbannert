@@ -24,7 +24,7 @@ const Card: FC<CardProperties> = ({ card, disabled, onClick, wrapperClasses }) =
     return (
         <div
             className={twMerge(
-                clsx(wrapperClasses, {
+                clsx("border border-transparent", wrapperClasses, {
                     "border-lime-500 border": card.isMatched,
                 }),
             )}

@@ -11,7 +11,6 @@
     "type": "module",
     "scripts": {
         "build": "tsc && vite build",
-        "postbuild": "react-snap",
         "build:github-list": "esno ./bin/generate-github-projects-list.ts",
         "clean": "rimraf node_modules dist",
         "commit": "cz",
@@ -160,8 +159,5 @@
             "cosmiconfig-typescript-loader": "^5.0.0",
             "minimist@<0.2.4": ">=0.2.4"
         }
-    },
-    "reactSnap": {
-        "source": "dist"
     }
 }

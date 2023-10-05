@@ -4,7 +4,7 @@ import Link from "../components/link";
 
 // eslint-disable-next-line import/no-unused-modules
 export const Page: FC = () => (
-    <div className="container mx-auto max-w-5xl 2xl:max-w-7xl">
+    <div className="container mx-auto max-w-5xl px-8 2xl:max-w-7xl">
         <div className="prose prose-lg pb-64 dark:prose-invert">
             <h1>Impressum</h1>
             <h3>Angaben gem&auml;&szlig; &sect; 5 TMG</h3>

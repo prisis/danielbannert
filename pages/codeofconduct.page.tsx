@@ -4,7 +4,7 @@ import Link from "../components/link";
 
 // eslint-disable-next-line import/no-unused-modules
 export const Page: FC = () => (
-    <div className="container mx-auto max-w-5xl 2xl:max-w-7xl">
+    <div className="container mx-auto max-w-5xl px-8 2xl:max-w-7xl">
         <div className="prose prose-lg pb-64 dark:prose-invert">
             <h1 id="contributor-covenant-code-of-conduct">Contributor Covenant Code of Conduct</h1>
             <h2 id="our-pledge">Our Pledge</h2>

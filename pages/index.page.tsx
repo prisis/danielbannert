@@ -20,7 +20,7 @@ export const Page: FC = () => (
                 <span className="text-zinc-500">Senior Fullstack Developer</span>
             </div>
 
-            <h1 className="-ml-1.5 mb-8 w-full overflow-hidden text-[80px] font-bold uppercase text-white md:-mt-10 md:mb-0 md:text-[160px] lg:text-[130px] xl:-ml-3 xl:text-[140px] 2xl:text-[200px]">
+            <h1 className="-ml-1.5 mb-8 w-full overflow-hidden text-[80px] font-bold uppercase text-white transition-all duration-1000 md:-mt-10 md:mb-0 md:text-[160px] lg:text-[130px] xl:-ml-3 xl:text-[140px] 2xl:text-[200px]">
                 Daniel Bannert
             </h1>
 
@@ -45,13 +45,13 @@ export const Page: FC = () => (
             <p className="p-8 uppercase text-zinc-500 md:pr-10 lg:absolute lg:bottom-0 lg:right-0 lg:p-12">Over 12 years of experience</p>
         </div>
 
-        <div className="container mx-auto flex max-w-5xl flex-col gap-12 px-8 py-64 md:flex-row md:gap-4 2xl:max-w-7xl 2xl:px-0">
+        <div className="container mx-auto flex max-w-5xl flex-col gap-12 px-8 py-64 transition-all duration-1000 md:flex-row md:gap-4 2xl:max-w-7xl 2xl:px-0">
             <div className="w-full md:w-4/12">
                 <h3 className="text-3xl font-bold">
                     Who the <span className="pointer-events-none text-zinc-300">f@#%</span> <br /> is Daniel Bannert?
                 </h3>
             </div>
-            <div className="prose prose-2xl prose-zinc w-full md:w-8/12">
+            <div className="prose prose-2xl prose-zinc w-full transition-all duration-1000 md:w-8/12">
                 <p>I&apos;m a passionate self-taught Full Stack Software Engineer and Open Source Enthusiast.</p>
                 <p>
                     I take great care in the experience, architecture, and code quality of the things I build. Collaboration is everything to me, and a

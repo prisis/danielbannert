@@ -128,7 +128,7 @@ const MemoryContainer: FC = () => {
                     </div>
                 </div>
             ) : (
-                <div className="relative mb-12 grid w-full grid-cols-3 rounded-lg border border-zinc-600 md:grid-cols-5 lg:grid-cols-7 2xl:grid-cols-10">
+                <div className="relative mb-12 grid w-full grid-cols-3 rounded-lg border border-zinc-600 transition-all duration-1000 md:grid-cols-5 lg:grid-cols-7 2xl:grid-cols-10">
                     {fields.map((value, index) => {
                         const position = index + 1;
 
