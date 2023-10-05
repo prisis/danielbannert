@@ -36,8 +36,8 @@ const Footer: FC = () => {
                 </h2>
 
                 <div className="pb-32 text-center">
-                    <h3 className="mb-6 text-6xl font-bold md:mb-4 md:text-8xl">Thanks for stopping by.</h3>
-                    <p className="text-4xl md:text-6xl">Before you leave, lets play a game.</p>
+                    <h3 className="mb-6 text-5xl font-bold transition-all duration-1000 md:mb-4 md:text-7xl xl:text-8xl">Thanks for stopping by.</h3>
+                    <p className="text-3xl transition-all duration-1000 md:text-5xl xl:text-6xl">Before you leave, lets play a game.</p>
                 </div>
 
                 <MemoryProvider>
