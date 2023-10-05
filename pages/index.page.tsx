@@ -15,12 +15,12 @@ export const Page: FC = () => (
                 background: "url('/assets/bg-pattern.png')",
             }}
         >
-            <div className="container relative z-10 mx-auto flex max-w-5xl flex-col gap-4 px-8 py-5 font-semibold uppercase md:flex-row 2xl:max-w-7xl 2xl:px-0">
+            <div className="container relative z-10 mx-auto flex max-w-5xl flex-col gap-4 px-8 pb-5 pt-10 font-semibold uppercase md:flex-row 2xl:max-w-7xl 2xl:px-0">
                 <span className="text-zinc-400">Open Source Enthusiast</span>
                 <span className="text-zinc-500">Senior Fullstack Developer</span>
             </div>
 
-            <h1 className="-ml-1.5 mb-8 w-full overflow-hidden text-[80px] font-bold uppercase text-white md:-ml-3 md:-mt-10 md:mb-0 md:text-[160px] lg:text-[200px]">
+            <h1 className="-ml-1.5 mb-8 w-full overflow-hidden text-[80px] font-bold uppercase text-white md:-mt-10 md:mb-0 md:text-[160px] lg:text-[130px] xl:-ml-3 xl:text-[140px] 2xl:text-[200px]">
                 Daniel Bannert
             </h1>
 
@@ -42,7 +42,7 @@ export const Page: FC = () => (
                     </div>
                 </div>
             </div>
-            <p className="absolute bottom-0 right-0 p-12 pr-8 uppercase text-zinc-500 md:pr-10">Over 12 years of experience</p>
+            <p className="p-8 uppercase text-zinc-500 md:pr-10 lg:absolute lg:bottom-0 lg:right-0 lg:p-12">Over 12 years of experience</p>
         </div>
 
         <div className="container mx-auto flex max-w-5xl flex-col gap-12 px-8 py-64 md:flex-row md:gap-4 2xl:max-w-7xl 2xl:px-0">
