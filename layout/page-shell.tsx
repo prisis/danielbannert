@@ -6,17 +6,20 @@ import AnimatedCursor from "react-animated-cursor";
 
 import Footer from "../components/footer";
 import Navigation from "../components/navigation";
+import { NavigationContextProvider } from "../context/use-navigation-context";
 import { PageContextProvider } from "../context/use-page-context";
 import type { PageContext } from "../renderer/types";
 
 const PageShell: FC<PropsWithChildren<{ pageContext: PageContext }>> = ({ children, pageContext }) => (
     <StrictMode>
         <PageContextProvider pageContext={pageContext}>
-            <div className="font-feature-default relative min-h-screen w-full antialiased font-inter">
-                <Navigation />
-                <div className="relative mt-48 flex w-full flex-col items-center justify-center align-middle">{children}</div>
-                <Footer />
-            </div>
+            <NavigationContextProvider>
+                <div className="font-feature-default relative min-h-screen w-full antialiased font-inter">
+                    <Navigation />
+                    <div className="relative mt-48 flex w-full flex-col items-center justify-center align-middle">{children}</div>
+                    <Footer />
+                </div>
+            </NavigationContextProvider>
             <AnimatedCursor
                 innerScale={1}
                 innerSize={8}

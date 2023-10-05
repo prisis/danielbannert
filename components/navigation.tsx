@@ -1,13 +1,33 @@
-import { DribbbleLogo, GithubLogo, Hamburger, LinkedinLogo, TwitterLogo } from "@phosphor-icons/react";
+import { DribbbleLogo, GithubLogo, LinkedinLogo, TwitterLogo } from "@phosphor-icons/react";
 // eslint-disable-next-line import/no-named-as-default
 import clsx from "clsx";
 import type { FC } from "react";
 import { useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
+import { useNavigationContext } from "../context/use-navigation-context";
 import { usePageContext } from "../context/use-page-context";
 import createLink from "../utils/create-link";
 
 const Navigation: FC = () => {
+    const mainLinks = useRef([
+        {
+            external: false,
+            path: "/",
+            title: "Home",
+        },
+
+        {
+            external: false,
+            path: "/projects",
+            title: "Projects",
+        },
+        {
+            external: false,
+            path: "/impress",
+            title: "Impress",
+        },
+    ]);
     const socialLinks = useRef([
         {
             external: true,
@@ -36,17 +56,21 @@ const Navigation: FC = () => {
     ]);
 
     const context = usePageContext();
+    const { classes, isTitleDisabled } = useNavigationContext();
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
             <div
-                className={clsx(
-                    "fixed bottom-0 left-0 top-auto z-20 w-full min-w-[240px] overflow-hidden bg-zinc-900 text-zinc-100 transition-all ease-in-out lg:top-0 lg:w-[calc(20vw+25px)] lg:rounded-br-2xl",
-                    {
-                        "h-[400px]": isOpen,
-                        "h-16": !isOpen,
-                    },
+                className={twMerge(
+                    clsx(
+                        "fixed bottom-0 left-0 top-auto z-20 w-full min-w-[240px] overflow-hidden text-zinc-100 transition-all ease-in-out lg:top-0 lg:w-[calc(20vw+25px)] lg:rounded-br-2xl",
+                        {
+                            "h-[400px]": isOpen,
+                            "h-16": !isOpen,
+                        },
+                        classes.root,
+                    ),
                 )}
             >
                 <div className="flex h-16 items-center justify-center">
@@ -60,13 +84,34 @@ const Navigation: FC = () => {
                     </a>
                     <div className="grow" />
                     <button
-                        className="mr-6 inline-block"
+                        aria-expanded={isOpen}
+                        aria-label="Main Menu"
+                        className={clsx("hamburger mr-6 inline-block", {
+                            "is-active": isOpen,
+                        })}
                         onClick={() => {
                             setIsOpen(!isOpen);
                         }}
                         type="button"
                     >
-                        <Hamburger className="h-8 w-8" />
+                        <svg className="h-14 w-14" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <g strokeLinecap="round" strokeWidth="6.5">
+                                <path d="M72 82.286h28.75" fill="#009100" fillRule="evenodd" stroke="currentColor" />
+                                <path
+                                    d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
+                                    fill="none"
+                                    stroke="currentColor"
+                                />
+                                <path d="M72 125.143h28.75" fill="#009100" fillRule="evenodd" stroke="currentColor" />
+                                <path
+                                    d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
+                                    fill="none"
+                                    stroke="currentColor"
+                                />
+                                <path d="M100.75 82.286h28.75" fill="#009100" fillRule="evenodd" stroke="currentColor" />
+                                <path d="M100.75 125.143h28.75" fill="#009100" fillRule="evenodd" stroke="currentColor" />
+                            </g>
+                        </svg>
                     </button>
                 </div>
                 <div
@@ -77,52 +122,27 @@ const Navigation: FC = () => {
                 >
                     <nav className="mx-8 mt-10 flex">
                         <ul className="flex flex-col gap-y-2">
-                            <li>
-                                {createLink(
-                                    {
-                                        external: false,
-                                        path: "/",
-                                        title: "Home",
-                                    },
-                                    true,
-                                    () => setIsOpen(!isOpen),
-                                )}
-                            </li>
-                            <li>
-                                {createLink(
-                                    {
-                                        external: false,
-                                        path: "/projects",
-                                        title: "Projects",
-                                    },
-                                    true,
-                                    () => setIsOpen(!isOpen),
-                                )}
-                            </li>
-                            <li>
-                                {createLink(
-                                    {
-                                        external: false,
-                                        path: "/impress",
-                                        title: "Impress",
-                                    },
-                                    true,
-                                    () => setIsOpen(!isOpen),
-                                )}
-                            </li>
+                            {mainLinks.current.map((item, index: number) => (
+                                // eslint-disable-next-line react/no-array-index-key
+                                <li key={index}>{createLink(item, true, () => setIsOpen(!isOpen), {
+                                    baseColor: classes.links ?? "text-zinc-100"
+                                })}</li>
+                            ))}
                         </ul>
                     </nav>
                     <div className="h-36 grow" />
                     <ul className={clsx("mx-8 flex items-center justify-start gap-8")}>
                         {socialLinks.current.map((item, index: number) => (
                             // eslint-disable-next-line react/no-array-index-key
-                            <li key={index}>{createLink(item, false, () => {})}</li>
+                            <li key={index}>{createLink(item, false, () => {}, {
+                                baseColor: classes.links ?? "text-zinc-100"
+                            })}</li>
                         ))}
                     </ul>
                 </div>
             </div>
-            {context.exports.documentProps?.navigationTitle && (
-                <h1 className="fixed top-5 z-20 hidden text-xl font-semibold text-zinc-900 lg:left-[calc(20vw+45px)] lg:block">
+            {!isTitleDisabled && context.exports.documentProps?.navigationTitle && (
+                <h1 className="fixed top-5 z-20 hidden text-xl text-zinc-900 lg:left-[calc(20vw+45px)] lg:block">
                     {context.exports.documentProps.navigationTitle}
                 </h1>
             )}
