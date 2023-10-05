@@ -1,4 +1,6 @@
 import { ArrowSquareOut } from "@phosphor-icons/react";
+// eslint-disable-next-line import/no-named-as-default
+import clsx from "clsx";
 import type { AnchorHTMLAttributes, DetailedHTMLProps, FC, PropsWithChildren } from "react";
 
 import { usePageContext } from "../context/use-page-context";
@@ -20,7 +22,7 @@ const Link: FC<
     baseColor = "text-zinc-500",
     boldText,
     children,
-    className = "transition-colors",
+    className,
     darkActiveColor = "dark:text-lime-500",
     darkColor = "dark:text-white",
     darkHoverColor = "dark:hover:text-lime-500",
@@ -36,19 +38,21 @@ const Link: FC<
 
     return (
         <a
-            className={[
-                "transition-colors",
-                underline ? "underline" : "",
-                pageContext.urlPathname === href ? `${activeColor} ${darkActiveColor}` : `${baseColor}`,
-                boldText ? "font-bold" : "",
-                `${hoverColor}`,
-                `${darkColor}`,
-                `${darkHoverColor}`,
-                className,
-                external ? "inline-flex" : "",
-            ]
-                .filter(Boolean)
-                .join(" ")}
+            className={clsx(
+                [
+                    "transition-colors",
+                    pageContext.urlPathname === href ? `${activeColor} ${darkActiveColor}` : `${baseColor}`,
+                    `${hoverColor}`,
+                    `${darkColor}`,
+                    `${darkHoverColor}`,
+                    className,
+                ],
+                {
+                    "font-bold": boldText,
+                    "inline-flex": external,
+                    underline,
+                },
+            )}
             href={href}
             target={linkTarget}
             // eslint-disable-next-line react/jsx-props-no-spreading

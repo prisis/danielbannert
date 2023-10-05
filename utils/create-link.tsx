@@ -13,11 +13,14 @@ const createLink = (
     { external, icon, path, title }: LinkProperties,
     showOnlyText?: boolean,
     onClick?: MouseEventHandler<unknown>,
-    className?: string,
+    linkStyling?: {
+        baseColor?: string;
+        className?: string;
+    }
 ): ReactElement => {
     if (icon && !showOnlyText) {
         return (
-            <Link className={className} href={path} onClick={onClick} title={title}>
+            <Link baseColor={linkStyling?.baseColor} className={linkStyling?.className} href={path} onClick={onClick} title={title}>
                 <span className="sr-only">{title}</span>
                 {icon}
             </Link>
@@ -25,7 +28,7 @@ const createLink = (
     }
 
     return (
-        <Link className={className} external={external} href={path} onClick={onClick} title={title}>
+        <Link baseColor={linkStyling?.baseColor} className={linkStyling?.className} external={external} href={path} onClick={onClick} title={title}>
             {title}
         </Link>
     );
