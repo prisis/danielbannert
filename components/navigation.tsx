@@ -169,7 +169,7 @@ const Navigation: FC = () => {
                             ))}
                         </motion.ul>
                     </motion.nav>
-                    <div className="h-36 grow" />
+                    <div className="h-32 grow" />
                     <motion.div animate={isOpen ? "open" : "closed"} className="mx-8" initial={false}>
                         <motion.ul
                             className="flex items-center justify-start gap-8"
