@@ -35,7 +35,7 @@ const Card: FC<CardProperties> = ({ card, disabled, onClick, position, wrapperCl
                         "opacity-100 delay-200 cursor-not-allowed z-20": card.isFlipped,
                     }),
                 )}
-                name={`memory-card-front-${position}`}
+                title={`memory-card-front-${position}`}
                 type="button"
             >
                 <Icon className="mx-auto h-full w-12" title={card.name} />
@@ -46,12 +46,12 @@ const Card: FC<CardProperties> = ({ card, disabled, onClick, position, wrapperCl
                         "opacity-0 hidden delay-200": card.isFlipped,
                     }),
                 )}
-                name={`memory-card-back-${position}`}
                 onClick={() => {
                     if (!disabled) {
                         onClick(card);
                     }
                 }}
+                title={`memory-card-back-${position}`}
                 type="button"
             >
                 <MemoryBg className="mx-auto h-full w-12" />

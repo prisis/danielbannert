@@ -18,7 +18,7 @@ const Footer: FC = () => {
         if (inView) {
             setClasses({
                 links: "text-zinc-900",
-                root: "bg-white text-zinc-900"
+                root: "bg-white text-zinc-900",
             });
             setIsTitleDisabled(true);
         } else {
@@ -71,13 +71,13 @@ const Footer: FC = () => {
 
                 <div className="flex w-full items-center justify-center py-32">
                     <button
-                        name="Scroll to top"
                         onClick={() => {
                             window.scrollTo({
                                 behavior: "smooth",
                                 top: 0,
                             });
                         }}
+                        title="Scroll to top"
                         type="button"
                     >
                         <RocketLaunch className="h-8 w-8 animate-bounce hover:text-lime-500" />
