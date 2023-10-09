@@ -10,7 +10,7 @@
     },
     "type": "module",
     "scripts": {
-        "build": "tsc && vite build",
+        "build": "vite build",
         "build:github-list": "esno ./bin/generate-github-projects-list.ts",
         "clean": "rimraf node_modules dist",
         "commit": "cz",
