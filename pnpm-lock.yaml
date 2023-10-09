@@ -48,9 +48,6 @@ dependencies:
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
-  nprogress:
-    specifier: ^0.2.0
-    version: 0.2.0
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -125,9 +122,6 @@ devDependencies:
   '@types/node':
     specifier: ^20.8.3
     version: 20.8.3
-  '@types/nprogress':
-    specifier: ^0.2.1
-    version: 0.2.1
   '@types/react':
     specifier: ^18.2.26
     version: 18.2.26
@@ -2890,10 +2884,6 @@ packages:
 
   /@types/normalize-package-data@2.4.2:
     resolution: {integrity: sha512-lqa4UEhhv/2sjjIQgjX8B+RBjj47eo0mzGasklVJ78UKGQY1r0VpB9XHDaZZO9qzEFDdy4MrXLuEaSmPrPSe/A==}
-    dev: true
-
-  /@types/nprogress@0.2.1:
-    resolution: {integrity: sha512-TYuyVnp+nOnimgdOydDIDYIxv2kSeuJZw4tF0p/KG7hpzcMF1WkHaREwM8O4blqfT1F7rq0nht6Ko2KVUfWzBA==}
     dev: true
 
   /@types/parse-unit@1.0.1:
@@ -10288,10 +10278,6 @@ packages:
       - validate-npm-package-name
       - which
       - write-file-atomic
-
-  /nprogress@0.2.0:
-    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
-    dev: false
 
   /nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}

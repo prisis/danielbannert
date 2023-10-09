@@ -1,4 +1,3 @@
-import { done, start } from "nprogress";
 import type { Root } from "react-dom/client";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
@@ -6,15 +5,6 @@ import { HelmetProvider } from "react-helmet-async";
 import PageShell from "../layout/page-shell";
 import SharedHeader from "./shared-header";
 import type { PageContextClient } from "./types";
-
-// eslint-disable-next-line import/exports-last,import/no-unused-modules,@typescript-eslint/explicit-module-boundary-types
-export const onTransitionStart = () => {
-    start();
-};
-// eslint-disable-next-line import/exports-last,@typescript-eslint/explicit-module-boundary-types,import/no-unused-modules
-export const onTransitionEnd = () => {
-    done();
-};
 
 let root: Root;
 
