@@ -18,7 +18,6 @@ const Card: FC<CardProperties> = ({ card, disabled, onClick, wrapperClasses }) =
         return null;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const Icon = card.icon;
 
     return (

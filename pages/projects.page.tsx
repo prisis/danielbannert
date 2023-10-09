@@ -3,7 +3,9 @@ import type { FC } from "react";
 import clarkTibbsImageProperties from "../assets/clark-tibbs-oqStl2L5oxI-unsplash.jpg?jsx";
 import Link from "../components/link";
 import ProjectList from "../components/project-list";
+// @ts-expect-error: file will be generated
 import GitHubProjectList from "../data/github-projects-list.json";
+import type { GithubProject } from "../types.d";
 
 // eslint-disable-next-line import/no-unused-modules
 export const Page: FC = () => (
@@ -35,17 +37,9 @@ export const Page: FC = () => (
         </div>
         <div className="w-full pb-64">
             <ProjectList
-                list={GitHubProjectList.filter((project) => project.stargazers_count >= 5)
-                    .sort((a, b) => (BigInt(a.stargazers_count) > BigInt(b.stargazers_count) ? -1 : 0))
-                    .map((project) => {
-                        return {
-                            description: project.description,
-                            language: project.language,
-                            stars: project.stargazers_count,
-                            title: project.full_name,
-                            url: project.html_url,
-                        };
-                    })}
+                list={(GitHubProjectList as GithubProject[])
+                    .filter((project) => project.stargazers_count >= 5)
+                    .sort((a, b) => (BigInt(a.stargazers_count) > BigInt(b.stargazers_count) ? -1 : 0))}
             />
         </div>
     </>

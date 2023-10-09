@@ -26,7 +26,18 @@ module.exports = {
             // Set parserOptions.project for the project to allow TypeScript to create the type-checker behind the scenes when we run linting
             parserOptions: {},
             rules: {
-                "editorconfig/indent": "off"
+                "editorconfig/indent": "off",
+            },
+        },
+        {
+            files: ["*.tsx"],
+            // Set parserOptions.project for the project to allow TypeScript to create the type-checker behind the scenes when we run linting
+            parserOptions: {},
+            rules: {
+                "@typescript-eslint/no-unsafe-assignment": "off",
+                "@typescript-eslint/no-unsafe-argument": "off",
+                "@typescript-eslint/no-unsafe-call": "off",
+                "@typescript-eslint/no-unsafe-member-access": "off",
             },
         },
         {
@@ -37,9 +48,7 @@ module.exports = {
         },
         {
             files: ["*.js", "*.jsx"],
-            rules: {
-
-            },
+            rules: {},
         },
         {
             files: ["*.mdx"],

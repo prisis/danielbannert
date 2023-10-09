@@ -1,15 +1,16 @@
 import { ArrowRight } from "@phosphor-icons/react";
 import type { FC } from "react";
 
+import type { GithubProject } from "../types";
 import Link from "./link";
 
 const ProjectList: FC<{
-    list: { description: string; language: string; stars: number; title: string; url: string }[];
+    list: GithubProject[];
     showMore?: boolean;
 }> = ({ list, showMore = false }) => (
     <>
         <ul className="flex flex-col">
-            {list.map(({ description, language, title, url }, index) => (
+            {list.map(({ description, full_name: title, html_url: url, language }, index) => (
                 <li className="group relative border-b border-zinc-100 bg-zinc-50 py-12 transition-all last:border-none hover:bg-white hover:py-16" key={title}>
                     <div
                         /* eslint-disable-next-line react/no-unknown-property */
