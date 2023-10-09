@@ -3,8 +3,7 @@ import process from "node:process";
 import react from "@vitejs/plugin-react";
 import ssr from "vike/plugin";
 import { defineConfig, loadEnv } from "vite";
-import { ViteFaviconsPlugin } from "vite-plugin-favicon2";
-import { viteStaticCopy } from "vite-plugin-static-copy";
+import faviconsPlugin from "@anolilab/unplugin-favicons/vite";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import svgr from "vite-plugin-svgr";
 import { imagetools, OutputFormat } from "vite-imagetools";
@@ -66,9 +65,9 @@ export default defineConfig(async ({ mode }) => {
                     return new URLSearchParams();
                 },
             }),
-            ViteFaviconsPlugin({
-                inject: false,
-                logo: "public/assets/favicon.svg",
+            faviconsPlugin({
+                logo: "./assets/logo.svg",
+                outputPath: "assets",
             }),
             ssr({
                 prerender: {
@@ -78,18 +77,6 @@ export default defineConfig(async ({ mode }) => {
                 },
             }),
             ViteImageOptimizer({}),
-            viteStaticCopy({
-                targets: [
-                    {
-                        dest: "assets",
-                        src: "public/assets/avatar.jpeg",
-                    },
-                    {
-                        dest: "assets",
-                        src: "public/assets/twitter_card.png",
-                    },
-                ],
-            }),
         ],
 
         test: {
