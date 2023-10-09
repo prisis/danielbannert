@@ -55,6 +55,11 @@ const Navigation: FC = () => {
             title: "Projects",
         },
         {
+            external: true,
+            path: "https://resume.danielbannert.com",
+            title: "Resume",
+        },
+        {
             external: false,
             path: "/impress",
             title: "Impress",

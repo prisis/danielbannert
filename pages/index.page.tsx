@@ -26,10 +26,10 @@ export const Page: FC = () => (
                 Daniel Bannert
             </h1>
 
-            <div className="container mx-auto flex max-w-5xl flex-col gap-4 px-8 pb-5 font-semibold uppercase md:flex-row 2xl:max-w-7xl 2xl:px-0">
-                <span className="text-zinc-500">Frontend Developer</span>
-                <span className="text-zinc-400">Backend Developer</span>
-                <span className="text-zinc-500">Graphic Designer</span>
+            <div className="container mx-auto flex max-w-5xl flex-col gap-4 px-8 pb-5 md:flex-row 2xl:max-w-7xl 2xl:px-0">
+                <h2 className="text-xl font-semibold uppercase text-zinc-400 transition-all duration-1000">
+                    Senior Fullstack Developer with a Decade of Tailored Experience
+                </h2>
             </div>
 
             <div className="container mx-auto max-w-5xl 2xl:max-w-7xl">
@@ -54,10 +54,19 @@ export const Page: FC = () => (
                 </h3>
             </div>
             <div className="prose prose-2xl prose-zinc w-full transition-all duration-1000 md:w-8/12">
-                <p>I&apos;m a passionate self-taught Full Stack Software Engineer and Open Source Enthusiast.</p>
                 <p>
-                    I take great care in the experience, architecture, and code quality of the things I build. Collaboration is everything to me, and a
-                    highlight of my career is when my work gets to become something that helps the community or industry as a whole.
+                    Hey there! I’m Daniel, a self-taught Full Stack Software Engineer and a coding aficionado who’s been fervently turning coffee into code for
+                    over a decade. My mission? To meticulously transform your big ideas into digital reality. With a strong knack for both front-end finesse and
+                    back-end brawn, I’m all about building web solutions that are not just functional, but fantastic.
+                </p>
+                <p>
+                    I am also an open-source enthusiast, deeply committed to the collaborative spirit that drives the tech community. I take immense care in
+                    ensuring the experience, architecture, and code quality of the projects I handle are top-notch. Every highlight of my career is marked by
+                    the moments when my work transcends individual goals and becomes a valuable asset for the community or industry as a whole.
+                </p>
+                <p>
+                    I am passionate about what I do, and nothing excites me more than witnessing the transformative power of well-crafted code in action. Ready
+                    to check my Resume out?
                 </p>
 
                 <a className="my-20 block no-underline" href="https://resume.danielbannert.com" rel="noreferrer" target="_blank" title="Resume">

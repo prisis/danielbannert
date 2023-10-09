@@ -7,10 +7,16 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
     <Helmet>
         <title>{pageContext.exports.documentProps?.title ?? "Daniel Bannert"}</title>
         <meta
-            content={pageContext.exports.documentProps?.description ?? "A Software Engineer, Consultant and Open Source Enthusiast from Regensburg (Germany)."}
+            content={
+                pageContext.exports.documentProps?.description ??
+                "Daniel Bannert is a seasoned Fullstack Developer dedicated to creating robust, user-friendly web solutions tailored to your business needs. Explore a portfolio of diverse projects and get in touch to elevate your digital presence."
+            }
             name="description"
         />
-
+        <meta
+            name="keywords"
+            content="Fullstack Developer, React Developer, JavaScript Development, Tech Stack Optimization, API Development and Integration, Web Performance Optimization"
+        />
         <meta content="Daniel Bannert" name="author" />
         <meta content="7 days" name="revisit-after" />
 
@@ -104,9 +110,7 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <link href="/assets/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
         <link href="/assets/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
         <link href="/assets/coast-228x228.png" rel="icon" sizes="228x228" type="image/png" />
-        <link href={`${import.meta.env.BASE_URL}assets/manifest.json`} rel="manifest" />
         <link href={`${import.meta.env.BASE_URL}assets/favicon.ico`} rel="shortcut icon" />
-        <link href={`${import.meta.env.BASE_URL}assets/yandex-browser-manifest.json`} rel="yandex-tableau-widget" />
         <meta content="#fff" name="msapplication-TileColor" />
         <meta content="/assets/mstile-144x144.png" name="msapplication-TileImage" />
         <meta content={`${import.meta.env.BASE_URL}assets/browserconfig.xml`} name="msapplication-config" />
