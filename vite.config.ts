@@ -7,6 +7,7 @@ import faviconsPlugin from "@anolilab/unplugin-favicons/vite";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import svgr from "vite-plugin-svgr";
 import { imagetools, OutputFormat } from "vite-imagetools";
+import PluginCritical from "rollup-plugin-critical";
 
 export default defineConfig(async ({ mode }) => {
     let url = "http://0.0.0.0:3000";
@@ -89,6 +90,35 @@ export default defineConfig(async ({ mode }) => {
                 },
             }),
             ViteImageOptimizer({}),
+            // @ts-expect-error - Wrong export
+            PluginCritical.default({
+                criticalUrl: "https://danielbannert.com/",
+                criticalBase: "./dist/client/",
+                criticalPages: [
+                    { uri: "", template: "index" },
+                    { uri: "projects", template: "projects" },
+                    { uri: "impress", template: "impress" },
+                    { uri: "codeofconduct", template: "codeofconduct" },
+                    { uri: "404", template: "404" },
+                ],
+                criticalConfig: {
+                    inline: true,
+                    dimensions: [
+                        {
+                            height: 900,
+                            width: 375,
+                        },
+                        {
+                            height: 720,
+                            width: 1280,
+                        },
+                        {
+                            height: 1080,
+                            width: 1920,
+                        },
+                    ],
+                },
+            }),
         ],
 
         test: {
