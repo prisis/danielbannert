@@ -7,3 +7,5 @@ export type MemoryCard = {
     isMatched: boolean;
     name: string;
 };
+
+export type GithubProject = { description: string; full_name: string; html_url: string; language: string; stargazers_count: number };

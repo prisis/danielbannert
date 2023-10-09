@@ -36,7 +36,6 @@ const ConfettiAnimation: FC = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const getInstance = useCallback((instance: any) => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         referenceAnimationInstance.current = instance;
     }, []);
 
@@ -46,9 +45,8 @@ const ConfettiAnimation: FC = () => {
         const startAnimation = () => {
             animationInterval = setInterval(() => {
                 if (referenceAnimationInstance.current) {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                     referenceAnimationInstance.current(getAnimationSettings(0.1, 0.3));
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
                     referenceAnimationInstance.current(getAnimationSettings(0.7, 0.9));
                 }
             }, 300) as unknown as number;
