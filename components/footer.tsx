@@ -71,6 +71,7 @@ const Footer: FC = () => {
 
                 <div className="flex w-full items-center justify-center py-32">
                     <button
+                        name="Scroll to top"
                         onClick={() => {
                             window.scrollTo({
                                 behavior: "smooth",

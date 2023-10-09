@@ -143,6 +143,7 @@ const MemoryContainer: FC = () => {
                                     disabled={disabledCards}
                                     key={position}
                                     onClick={handleCardItemClick}
+                                    position={position}
                                     wrapperClasses={sharedClasses}
                                 />
                             );

@@ -9,6 +9,18 @@ import svgr from "vite-plugin-svgr";
 import { imagetools, OutputFormat } from "vite-imagetools";
 
 export default defineConfig(async ({ mode }) => {
+    let url = "http://0.0.0.0:3000";
+
+    if (process.env["NETLIFY"]) {
+        if (process.env["CONTEXT"] === "production") {
+            url = process.env["URL"] as string;
+        } else if (process.env["CONTEXT"] !== "production") {
+            url = process.env["DEPLOY_PRIME_URL"] as string;
+        }
+    }
+
+    process.env["VITE_DOMAIN_URL"] = url.replace(/\/$/u, "");
+
     Object.assign(process.env, loadEnv(mode, process.cwd()));
 
     return {

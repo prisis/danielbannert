@@ -3,28 +3,26 @@ import { Helmet } from "react-helmet-async";
 
 import type { PageContext } from "./types.d";
 
+const defaultDescription =
+    "Daniel Bannert is a seasoned Fullstack Developer dedicated to creating robust, user-friendly web solutions tailored to your business needs. Explore a portfolio of diverse projects and get in touch to elevate your digital presence.";
+
 const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
     <Helmet>
         <title>{pageContext.exports.documentProps?.title ?? "Daniel Bannert"}</title>
-        <meta
-            content={
-                pageContext.exports.documentProps?.description ??
-                "Daniel Bannert is a seasoned Fullstack Developer dedicated to creating robust, user-friendly web solutions tailored to your business needs. Explore a portfolio of diverse projects and get in touch to elevate your digital presence."
-            }
-            name="description"
-        />
+        <meta content={pageContext.exports.documentProps?.description ?? defaultDescription} name="description" />
         <meta
             name="keywords"
             content="Fullstack Developer, React Developer, JavaScript Development, Tech Stack Optimization, API Development and Integration, Web Performance Optimization"
         />
+
         <meta content="Daniel Bannert" name="author" />
         <meta content="7 days" name="revisit-after" />
 
         <meta content="summary_large_image" name="twitter:card" />
         <meta content="@_prisis_" name="twitter:creator" />
-        <meta content={`${import.meta.env.BASE_URL}assets/twitter_card.png`} name="twitter:image" />
+        <meta content={`${(import.meta.env["VITE_DOMAIN_URL"] as string)}/assets/twitter_card.png`} name="twitter:image" />
         <meta
-            content="I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful."
+            content={defaultDescription}
             name="twitter:image:alt"
         />
 
@@ -32,19 +30,20 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <meta
             content={
                 pageContext.exports.documentProps?.description ??
-                "I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful."
+                defaultDescription
             }
             property="og:description"
         />
-        <meta content={`${import.meta.env.BASE_URL}assets/twitter_card.png`} property="og:image" />
+        <meta content={`${(import.meta.env["VITE_DOMAIN_URL"] as string)}/assets/twitter_card.png`} property="og:image" />
         <meta
-            content="I am a software architect and developer building products to make the world a better place by making things easier, faster and more beautiful."
+            content={defaultDescription}
             property="og:image:alt"
         />
         <meta content="en_GB" property="og:locale" />
         <meta content="website" property="og:type" />
-        <meta content={`${import.meta.env.BASE_URL}${pageContext.exports.documentProps?.pageUrl?.trimStart().replaceAll(/^\/+/gu, "")}`} property="og:url" />
-        <link href={`${import.meta.env.BASE_URL}${pageContext.exports.documentProps?.pageUrl?.trimStart().replaceAll(/^\/+/gu, "")}`} rel="canonical" />
+        <meta content={`${(import.meta.env["VITE_DOMAIN_URL"] as string)}/${pageContext.exports.documentProps?.pageUrl?.trimStart().replaceAll(/^\/+/gu, "")}`} property="og:url" />
+
+        <link href={`${(import.meta.env["VITE_DOMAIN_URL"] as string)}/${pageContext.exports.documentProps?.pageUrl?.trimStart().replaceAll(/^\/+/gu, "")}`} rel="canonical" />
 
         <link href="/assets/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57" />
         <link href="/assets/apple-touch-icon-60x60.png" rel="apple-touch-icon" sizes="60x60" />
@@ -110,10 +109,10 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <link href="/assets/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
         <link href="/assets/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
         <link href="/assets/coast-228x228.png" rel="icon" sizes="228x228" type="image/png" />
-        <link href={`${import.meta.env.BASE_URL}assets/favicon.ico`} rel="shortcut icon" />
+        <link href={`${import.meta.env["BASE_URL"]}assets/favicon.ico`} rel="shortcut icon" />
         <meta content="#fff" name="msapplication-TileColor" />
         <meta content="/assets/mstile-144x144.png" name="msapplication-TileImage" />
-        <meta content={`${import.meta.env.BASE_URL}assets/browserconfig.xml`} name="msapplication-config" />
+        <meta content={`${import.meta.env["BASE_URL"]}assets/browserconfig.xml`} name="msapplication-config" />
         <meta content="#fff" name="theme-color" />
 
         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
