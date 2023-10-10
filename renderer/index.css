@@ -6,6 +6,27 @@
     --cursor-color: rgb(132, 204, 22);
 }
 
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #18181b #ffffff;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #18181b;
+    border-radius: 20px;
+    border: 3px solid #ffffff;
+}
+
 html {
     scroll-behavior: smooth;
 }
