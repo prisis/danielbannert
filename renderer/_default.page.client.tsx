@@ -42,5 +42,5 @@ const render = (pageContext: PageContextClient): void => {
     }
 };
 
-// eslint-disable-next-line import/no-unused-modules
+// eslint-disable-next-line import/no-unused-modules,import/prefer-default-export
 export { render };

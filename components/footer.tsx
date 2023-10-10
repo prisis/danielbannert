@@ -59,6 +59,8 @@ const Footer: FC = () => {
                         </Link>{" "}
                         © {new Date().getFullYear()} Daniel Bannert.
                         <br />
+                        <span className="font-light">in cahoots with</span> <span className="font-bold">anolilab.de</span>
+                        <br />
                         All rights reserved.
                         <br />
                     </p>
