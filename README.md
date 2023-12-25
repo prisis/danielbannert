@@ -2,7 +2,7 @@
 
 ## Installation
 
-This project uses [pnpm](https://pnpm.io/), [vitejs](https://vitejs.dev/) and [vitest](https://vitest.dev/) for all its internal build processes. In theory, this project requires at lest Node v16 to run.
+This project uses [pnpm](https://pnpm.io/), [vitejs](https://vitejs.dev/) and [vitest](https://vitest.dev/) for all its internal build processes. In theory, this project requires at lest Node v20 to run.
 
 ## Quick Commands
 
