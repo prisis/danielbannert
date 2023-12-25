@@ -116,8 +116,8 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <meta content="#fff" name="theme-color" />
 
         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-        {import.meta.env["VITE_FATHOM_SITE"] ?? (
-            <script data-site={import.meta.env["VITE_FATHOM_SITE"]} data-spa="auto" defer src="https://cdn.usefathom.com/script.js" />
+        {import.meta.env["VITE_TRACKING_SITE"] ?? (
+            <script async src="https://eu.umami.is/script.js" data-website-id={import.meta.env["VITE_TRACKING_SITE"]}/>
         )}
     </Helmet>
 );
