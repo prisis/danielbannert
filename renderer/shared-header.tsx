@@ -114,11 +114,6 @@ const SharedHeader: FC<{ pageContext: PageContext }> = ({ pageContext }) => (
         <meta content="/assets/mstile-144x144.png" name="msapplication-TileImage" />
         <meta content={`${import.meta.env["BASE_URL"]}assets/browserconfig.xml`} name="msapplication-config" />
         <meta content="#fff" name="theme-color" />
-
-        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-        {import.meta.env["VITE_TRACKING_SITE"] ?? (
-            <script async src="https://eu.umami.is/script.js" data-website-id={import.meta.env["VITE_TRACKING_SITE"]}/>
-        )}
     </Helmet>
 );
 

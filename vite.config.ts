@@ -7,6 +7,7 @@ import faviconsPlugin from "@anolilab/unplugin-favicons/vite";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import svgr from "vite-plugin-svgr";
 import { imagetools, OutputFormat } from "vite-imagetools";
+
 export default defineConfig(async ({ mode }) => {
     let url = "http://0.0.0.0:3000";
 
