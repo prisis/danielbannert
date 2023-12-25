@@ -89,7 +89,9 @@ export default defineConfig(async ({ mode }) => {
             }),
             ViteImageOptimizer({}),
         ],
-
+        ssr: {
+            noExternal: ["react-helmet-async"],
+        },
         test: {
             environment: "node",
         },
