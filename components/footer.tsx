@@ -82,6 +82,7 @@ const Footer: FC = () => {
                         title="Scroll to top"
                         type="button"
                     >
+                        <span className="sr-only">Scroll to top</span>
                         <RocketLaunch className="h-8 w-8 animate-bounce hover:text-lime-500" />
                     </button>
                 </div>

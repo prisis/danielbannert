@@ -38,6 +38,7 @@ const Card: FC<CardProperties> = ({ card, disabled, onClick, position, wrapperCl
                 title={`memory-card-front-${position}`}
                 type="button"
             >
+                <span className="sr-only">{card.name}</span>
                 <Icon className="mx-auto h-full w-12" title={card.name} />
             </button>
             <button
@@ -54,6 +55,7 @@ const Card: FC<CardProperties> = ({ card, disabled, onClick, position, wrapperCl
                 title={`memory-card-back-${position}`}
                 type="button"
             >
+                <span className="sr-only">background</span>
                 <MemoryBg className="mx-auto h-full w-12" />
             </button>
         </div>

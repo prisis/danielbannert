@@ -41,10 +41,10 @@ const Link: FC<
             className={clsx(
                 [
                     "transition-colors",
-                    pageContext.urlPathname === href ? `${activeColor} ${darkActiveColor}` : `${baseColor}`,
-                    `${hoverColor}`,
-                    `${darkColor}`,
-                    `${darkHoverColor}`,
+                    pageContext.urlPathname === href ? `${activeColor} ${darkActiveColor}` : baseColor,
+                    hoverColor,
+                    darkColor,
+                    darkHoverColor,
                     className,
                 ],
                 {

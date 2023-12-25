@@ -145,7 +145,7 @@ export const Page = ({ is404 }: { is404: boolean }) => {
                         </svg>
                     </div>
                     <div className="w-full lg:w-1/2">
-                        <h1 className="py-4 text-3xl font-extrabold text-gray-800 dark:text-white lg:text-4xl">
+                        <h1 className="py-4 text-3xl font-extrabold text-gray-800 lg:text-4xl dark:text-white">
                             {/* eslint-disable-next-line react/no-unescaped-entities */}
                             Looks like you've found the doorway to the great nothing
                         </h1>

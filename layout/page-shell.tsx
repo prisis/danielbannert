@@ -14,7 +14,7 @@ const PageShell: FC<PropsWithChildren<{ pageContext: PageContext }>> = ({ childr
     <StrictMode>
         <PageContextProvider pageContext={pageContext}>
             <NavigationContextProvider>
-                <div className="font-feature-default relative min-h-screen w-full antialiased font-inter">
+                <div className="relative min-h-screen w-full antialiased font-inter font-feature-default">
                     <Navigation />
                     <div className="relative mt-24 flex w-full flex-col items-center justify-center align-middle md:mt-32 2xl:mt-48">{children}</div>
                     <Footer />
